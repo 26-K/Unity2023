@@ -1235,9 +1235,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   MaxHP: 0
+  id: 0
+  side: 0
   characterController: {fileID: 1596645652}
   baseMoveSpd: 0.3
   shotBullet: {fileID: 1874330960}
+  bulletShootPos: {fileID: 1998404905}
 --- !u!143 &1596645652
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1524,7 +1527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10156cce6cf5844bbcdc5aaa079031a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
+  owner: {fileID: 0}
   spd: {x: 0, y: 0, z: 0}
   rgd: {fileID: 1874330959}
   pow: 1
