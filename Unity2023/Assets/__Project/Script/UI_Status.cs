@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine;
 public class UI_Status : MonoBehaviour
 {
     InGameManager parent;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI hpText;
     public void Init(InGameManager parent)
     {
         this.parent = parent;
