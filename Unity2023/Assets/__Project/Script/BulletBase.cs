@@ -35,7 +35,7 @@ public class BulletBase : MonoBehaviour
         Vector2 direction = Quaternion.Euler(0f, 0f, randomAngle) * this.transform.rotation.eulerAngles;
 
         // 弾き飛ばす力を計算
-        Vector2 force = direction.normalized * rgd.velocity.magnitude * 10.0f;
+        Vector2 force = direction.normalized * rgd.velocity.magnitude * 3.0f;
         rgd.AddForce(force,ForceMode.Impulse);
         //rgd.velocity = rgd.velocity * -3;
     }

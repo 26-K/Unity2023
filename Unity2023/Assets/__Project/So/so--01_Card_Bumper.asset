@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e45e38b50dbba03478a79b747f07be70, type: 3}
-  m_Name: so--Card_Bumper
+  m_Name: so--01_Card_Bumper
   m_EditorClassIdentifier: 
   model: {fileID: 5127175837463116578, guid: 2688e7af8fc628c4d89b2371a3a79869, type: 3}
   id: 1
