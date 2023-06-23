@@ -25,6 +25,20 @@ public class BulletBase : MonoBehaviour
     {
         rgd.velocity = vec * 50;
     }
+    public void AddBounce(float rate)
+    {
+        float maxAngle = 5.0f;
+        // ランダムな角度を計算
+        float randomAngle = Random.Range(-maxAngle, maxAngle) + 90;
+
+        // 弾き飛ばす方向を計算
+        Vector2 direction = Quaternion.Euler(0f, 0f, randomAngle) * this.transform.rotation.eulerAngles;
+
+        // 弾き飛ばす力を計算
+        Vector2 force = direction.normalized * rgd.velocity.magnitude * 10.0f;
+        rgd.AddForce(force,ForceMode.Impulse);
+        //rgd.velocity = rgd.velocity * -3;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

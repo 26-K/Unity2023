@@ -48,4 +48,5 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
         //    Instantiate(objectToPlace, placementPosition, Quaternion.identity);
         //}
     }
+
 }
