@@ -7,6 +7,10 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
     [SerializeField] Player pl;
     [SerializeField] UI_Status statusUI;
     [SerializeField] DataBaseSO dataBaseSO;
+    [SerializeField] GameObject objectToPlace;
+    [SerializeField] PlayerInfoManager playerInfoManager;
+    [SerializeField] CardManager cardManager;
+    public CardManager GetCardManager() => cardManager;
 
     protected override void UnityAwake()
     {
@@ -16,5 +20,32 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
     void Start()
     {
         pl.Init();
+        playerInfoManager.Init(this);
+        cardManager.Init(this);
+    }
+
+    private void Update()
+    {
+        //// マウスの位置を取得
+        //Vector3 mousePosition = Input.mousePosition;
+        //mousePosition.z = 10; // オブジェクトの奥行き（Z軸）の位置を設定
+
+        //// マウスの位置をワールド座標に変換
+        //Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        //// オブジェクトを配置する位置を基準にするためのオフセットを設定
+        //Vector3 offset = new Vector3(0, 0, 0); // 適切なオフセットを設定してください
+
+        //// オブジェクトを配置する位置を計算
+        //Vector3 placementPosition = worldPosition + offset;
+
+        //// オブジェクトを配置する位置に移動させる
+        //objectToPlace.transform.position = placementPosition;
+
+        //// 左クリックでオブジェクトを配置する
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Instantiate(objectToPlace, placementPosition, Quaternion.identity);
+        //}
     }
 }
