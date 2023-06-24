@@ -56,6 +56,7 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
         {
             return;
         }
+        InGameManager.Ins.GetCardManager().AllDiscard();
         InGameManager.Ins.GetCardManager().DiscardCardCheck();
         currentTurn = TurnState.PlayerTurn_Wait;
         InGameManager.Ins.GetFieldManager().LaunchStart();

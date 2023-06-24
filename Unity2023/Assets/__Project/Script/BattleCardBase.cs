@@ -203,6 +203,10 @@ public class BattleCardBase : MonoBehaviour
     {
         nowPile = NowPile.HandPile;
     }
+    public void SetDiscard()
+    {
+        nowPile = NowPile.DiscardPile;
+    }
     public void SetDiscard(Vector2 discardPliePos)
     {
         nowPile = NowPile.DiscardPile;

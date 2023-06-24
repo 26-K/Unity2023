@@ -118,6 +118,17 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    public void AllDiscard()
+    {
+        foreach (var a in hand)
+        {
+            if (a.GetNowPile() == NowPile.HandPile)
+            {
+                a.SetDiscard();
+            }
+        }
+    }
+
     // カードを手札から捨て札に移動する
     public void DiscardCardCheck()
     {
