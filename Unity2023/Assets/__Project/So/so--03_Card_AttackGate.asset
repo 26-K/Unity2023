@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f031f5edc614cef4b842fc940343a152, type: 3}
   m_Name: so--03_Card_AttackGate
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
+  model: {fileID: -8954064891740360306, guid: 500f751da41b5814bb8d3e1e917388ee, type: 3}
   isSet: 1
   id: 3
   rarity: 2

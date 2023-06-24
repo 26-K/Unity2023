@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45e38b50dbba03478a79b747f07be70, type: 3}
   m_Name: so--01_Card_Bumper
   m_EditorClassIdentifier: 
-  model: {fileID: 5127175837463116578, guid: 2688e7af8fc628c4d89b2371a3a79869, type: 3}
+  model: {fileID: 8480370798407878455, guid: 2688e7af8fc628c4d89b2371a3a79869, type: 3}
   isSet: 1
   id: 1
   rarity: 1

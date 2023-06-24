@@ -96,4 +96,11 @@ public class FieldManager : MonoBehaviour
         float turnEndTime = 25.0f;
         return (bulletBases.Count <= 0) || launchTimer >= turnEndTime;
     }
+
+    public void SetObject(SetObjectBase obj)
+    {
+        obj.transform.parent = this.objectParent.transform;
+        obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, 0);
+        setObjects.Add(obj);
+    }
 }

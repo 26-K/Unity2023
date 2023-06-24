@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a9360fb0bc05244899287bd69d26b2, type: 3}
+  m_Name: so--05_Card_BasicNail
+  m_EditorClassIdentifier: 
+  model: {fileID: 3641389585407823477, guid: cfbb721405c336d49b9a22d25975ae2f, type: 3}
+  isSet: 1
+  id: 5
+  rarity: 1
+  sprite: {fileID: 21300000, guid: c9fad11032d00bd49a81419328d91d26, type: 3}
+  cost: 0
+  cardName: "\u91D8"
+  cardText: "\u5186\u5F62\u306E\u58C1\u3092\u914D\u7F6E\u3059\u308B"
