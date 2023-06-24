@@ -70,7 +70,7 @@ public class CardManager : MonoBehaviour
     }
 
     // カードを手札から捨て札に移動する
-    private void DiscardCardCheck()
+    public void DiscardCardCheck()
     {
         List<BattleCardBase> moveList = new List<BattleCardBase>();
         foreach (var a in hand)
