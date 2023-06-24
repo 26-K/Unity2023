@@ -12,6 +12,7 @@ public class TitleScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         DOVirtual.DelayedCall(1.0f, ()=> title.SetActive(true));
         DOVirtual.DelayedCall(1.5f, ()=> startButton.SetActive(true));
     }

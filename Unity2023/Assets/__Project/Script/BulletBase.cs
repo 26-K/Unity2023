@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class BulletBase : MonoBehaviour
 {
-    public CharacterBase owner;
+    CharacterBase owner;
     public Vector3 spd;
     public Rigidbody rgd;
+
+    
 
     public int pow = 1;
     int ignoreFlame = 7;
@@ -54,5 +56,10 @@ public class BulletBase : MonoBehaviour
             ignoreFlame = 2;
             damageable.TakeDamage(pow, owner);
         }
+    }
+
+    public bool IsRemoveReady()
+    {
+        return false;
     }
 }

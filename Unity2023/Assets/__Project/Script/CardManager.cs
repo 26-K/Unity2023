@@ -14,7 +14,6 @@ public class CardManager : MonoBehaviour
     // Start is called before the first frame update
     public InGameManager parent;
 
-
     public void Init(InGameManager parent)
     {
         this.parent = parent;
@@ -25,7 +24,20 @@ public class CardManager : MonoBehaviour
 
     public void BattleStart()
     {
+        int drawCount = 5;
+        for (int i = 0; i < drawCount; i++)
+        {
+            DrawCard();
+        }
+    }
 
+    public void TurnStart()
+    {
+        int drawCount = 5;
+        for (int i = 0; i < drawCount; i++)
+        {
+            DrawCard();
+        }
     }
 
     // Update is called once per frame

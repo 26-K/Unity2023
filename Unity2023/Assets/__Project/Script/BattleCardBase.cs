@@ -68,9 +68,9 @@ public class BattleCardBase : MonoBehaviour
         else if (nowPile == NowPile.DiscardToDrawMoveNowPile)
         {
         }
-        currentPos = Vector2.Lerp(currentPos, targetPos, 0.05f);
+        currentPos = Vector2.Lerp(currentPos, targetPos, 0.1f);
         sizeRect.anchoredPosition = currentPos;
-        currentScale = Vector3.Lerp(currentScale, targetScale, 0.05f);
+        currentScale = Vector3.Lerp(currentScale, targetScale, 0.1f);
         sizeRect.localScale = currentScale;
 
     }

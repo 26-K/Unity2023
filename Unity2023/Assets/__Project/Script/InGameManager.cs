@@ -10,10 +10,13 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
     [SerializeField] GameObject objectToPlace;
     [SerializeField] PlayerInfoManager playerInfoManager;
     [SerializeField] CardManager cardManager;
+    [SerializeField] FieldManager fieldManager;
     public CardManager GetCardManager() => cardManager;
+    public FieldManager GetFieldManager() => fieldManager;
 
     protected override void UnityAwake()
     {
+        Application.targetFrameRate = 60;
     }
 
     // Start is called before the first frame update
