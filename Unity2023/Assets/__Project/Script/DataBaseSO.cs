@@ -16,6 +16,11 @@ public class DataBaseSO : ScriptableObject
         }
         return rarityImages[rarity - 1];
     }
+
+    public List<CardEffectBase> GetAllCards()
+    {
+        return cards;
+    }
 }
 
 public enum Rarity

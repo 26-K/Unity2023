@@ -11,8 +11,12 @@ public class CardManager : MonoBehaviour
     [SerializeField] public HandManager handManager;
     [SerializeField] public DrawPileManager drawPlie;
     [SerializeField] public DiscardPileManager discardPileManager;
+    [SerializeField] public ManaManager manaManager;
+    [SerializeField] Canvas parentCanvas;
     // Start is called before the first frame update
-    public InGameManager parent;
+    [HideInInspector] public InGameManager parent;
+    public int mana { get; private set; } = 0;
+    public int maxMana { get; private set; } = 3;
 
     public void Init(InGameManager parent)
     {
@@ -20,20 +24,19 @@ public class CardManager : MonoBehaviour
         handManager.Init(this);
         drawPlie.Init(this);
         discardPileManager.Init(this);
+        manaManager.Init(this);
     }
 
     public void BattleStart()
     {
-        int drawCount = 5;
-        for (int i = 0; i < drawCount; i++)
-        {
-            DrawCard();
-        }
+        maxMana = 3; //レリックの効果等で最大マナが変わるかもしれん、
     }
 
     public void TurnStart()
     {
         int drawCount = 5;
+        this.mana = 0;
+        ChangeMana(maxMana);
         for (int i = 0; i < drawCount; i++)
         {
             DrawCard();
@@ -53,7 +56,7 @@ public class CardManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            DrawCard();
+            GenerateRandomCardAddHand();
         }
     }
 
@@ -129,5 +132,38 @@ public class CardManager : MonoBehaviour
             deck[i] = deck[randomIndex];
             deck[randomIndex] = temp;
         }
+    }
+
+    public bool IsEnoughMana(int requireMana)
+    {
+        return this.mana >= requireMana;
+    }
+    public void ChangeMana(int changeVal)
+    {
+        this.mana += changeVal;
+        if (changeVal >= 1)
+        {
+            manaManager.PlayChargeManaAnim();
+        }
+        manaManager.Refresh();
+    }
+
+    public void GenerateRandomCardAddHand()
+    {
+        var card = Instantiate(cardBase, handManager.transform);
+        var cardEffect = GetRandom(InGameManager.Ins.GetDatabase().GetAllCards());
+        card.Init(handManager.GetHandRect, parentCanvas, cardEffect);
+        AddHand(card);
+    }
+
+    private void AddHand(BattleCardBase card)
+    {
+        card.SetHandPile();
+        hand.Add(card);
+    }
+
+    T GetRandom<T>(List<T> Params)
+    {
+        return Params[Random.Range(0, Params.Count)];
     }
 }

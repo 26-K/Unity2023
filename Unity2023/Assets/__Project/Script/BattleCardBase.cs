@@ -21,29 +21,46 @@ public class BattleCardBase : MonoBehaviour
     public bool isSelect;
     public bool isUse = false;
     [SerializeField] RectTransform sizeRect;
+    [SerializeField] Image cardImage;
     [SerializeField] Image backRarityImage;
     [SerializeField] TextMeshProUGUI cardNameText;
     [SerializeField] TextMeshProUGUI cardDescText;
     [SerializeField] TextMeshProUGUI costText;
     Vector2 targetPos = new Vector2(0, 0.0f);
     Vector2 currentPos = new Vector2(0, 0.0f);
+    Vector2 addPos = new Vector2(0, 0.0f);
     Vector2 targetScale = new Vector2(1.0f, 1.0f);
     Vector2 currentScale = new Vector2(1.0f, 1.0f);
 
     NowPile nowPile = NowPile.HandPile;
-    //float targetPos = 10.0f;
-    //float currentPos = 0.0f;
     RectTransform parentRect;
+    RectTransform handRect;
     Canvas canvas;
     Vector2 margin = new Vector2(0.0f, 0.0f);
     Vector2 marginCard = new Vector2(0.0f, -200.0f);
     float drawPileWaitTimer = 0.0f;
-
-    public void Init(RectTransform rect, Canvas parentCanvas)
+    CardEffectBase cardEffect;
+    public void Init(RectTransform rect, Canvas parentCanvas, CardEffectBase cardEffect)
     {
+        this.handRect = rect;
         this.parentRect = parentCanvas.GetComponent<RectTransform>();
-        margin = parentRect.sizeDelta * 0.5f;
         this.canvas = parentCanvas;
+        margin = parentRect.sizeDelta * 0.5f;
+
+        this.cardEffect = cardEffect;
+        this.cardImage.sprite = cardEffect.sprite;
+        cardNameText.text = cardEffect.cardName; //カード名
+        cardDescText.text = cardEffect.cardText; //カードテキスト(説明)
+        costText.text = $"{cardEffect.cost}";
+    }
+
+    /// <summary>
+    /// カードを使用した時等のステータスの変化があった時カードの状態更新に使用
+    /// </summary>
+    public void Refresh()
+    {
+        bool enoughCost = true;
+        costText.color = (enoughCost || nowPile != NowPile.HandPile) ? Color.white : Color.red; //手札にカードがあってかつコストが足りない場合赤文字
     }
 
     public void UpdateParent(RectTransform parentCanvasRect, Canvas canvas)
@@ -95,7 +112,7 @@ public class BattleCardBase : MonoBehaviour
             }
             else
             {
-                targetPos.y = 0.0f;
+                targetPos.y = 0.0f + addPos.y;
                 targetScale = Vector3.one * 1.0f;
             }
         }
@@ -105,17 +122,23 @@ public class BattleCardBase : MonoBehaviour
     {
         this.targetPos = targetPos;
     }
+    public void SetAddPos(Vector3 targetPos)
+    {
+        this.addPos = targetPos;
+    }
 
     public void OnPointerEnter()
     {
         AudioManager.Ins.PlayCardHoverSound();
         isSelect = true;
+        this.transform.SetAsLastSibling(); //Hierarkey最後尾に移動させて画面上で最前面に表示させる
     }
 
 
     public void OnPointerExit()
     {
         isSelect = false;
+        this.transform.SetAsFirstSibling(); //Hierarkey最前面に移動させて画面上で最前面に表示させる
     }
 
     public void OnPointerDown()
@@ -140,8 +163,7 @@ public class BattleCardBase : MonoBehaviour
             if (hit.collider.CompareTag("BattleField"))
             {
                 // 重なっているので使用可能
-                isUse = true;
-                Debug.Log("Use");
+                TryUse();
             }
         }
 
@@ -150,6 +172,21 @@ public class BattleCardBase : MonoBehaviour
             nowPile = NowPile.DiscardPile;
         }
     }
+
+    private void TryUse()
+    {
+        if (cardEffect.CanUse())
+        {
+            Debug.Log("Use");
+            isUse = true;
+            cardEffect.DoUse();
+        }
+        else
+        {
+            Debug.Log("カード使用失敗!");
+        }
+    }
+
     private Vector3 GetMouseCanvasPosition()
     {
         Vector3 mousePosition;

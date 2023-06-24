@@ -34,6 +34,7 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
     {
         elapsedTurn = 0;
         CurrentTurnManagerUI.Ins.ShowBattleStartAnim();
+        InGameManager.Ins.GetCardManager().BattleStart();
         DOVirtual.DelayedCall(1.5f, () =>
         {
             StartPlayerTurn();

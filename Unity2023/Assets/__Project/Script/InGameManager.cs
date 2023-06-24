@@ -7,10 +7,10 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
     [SerializeField] Player pl;
     [SerializeField] UI_Status statusUI;
     [SerializeField] DataBaseSO dataBaseSO;
-    [SerializeField] GameObject objectToPlace;
     [SerializeField] PlayerInfoManager playerInfoManager;
     [SerializeField] CardManager cardManager;
     [SerializeField] FieldManager fieldManager;
+    public DataBaseSO GetDatabase() => dataBaseSO;
     public CardManager GetCardManager() => cardManager;
     public FieldManager GetFieldManager() => fieldManager;
 
