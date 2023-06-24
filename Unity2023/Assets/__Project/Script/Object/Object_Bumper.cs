@@ -8,6 +8,6 @@ public class Object_Bumper : SetObjectBase
     public override void TouchEnterAction(Collision collision)
     {
         anim.Play("default");
-        collision.gameObject.GetComponent<BulletBase>().AddBounce(0.8f);
+        collision.gameObject.GetComponent<BulletBase>().AddBounce(2.8f);
     }
 }

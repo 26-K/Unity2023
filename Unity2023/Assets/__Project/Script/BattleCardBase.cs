@@ -52,6 +52,7 @@ public class BattleCardBase : MonoBehaviour
         cardNameText.text = cardEffect.cardName; //カード名
         cardDescText.text = cardEffect.cardText; //カードテキスト(説明)
         costText.text = $"{cardEffect.cost}";
+        backRarityImage.sprite = InGameManager.Ins.GetDatabase().GetCardBackImage((int)cardEffect.rarity);
     }
 
     /// <summary>
@@ -170,6 +171,7 @@ public class BattleCardBase : MonoBehaviour
         if (isUse == true)
         {
             nowPile = NowPile.DiscardPile;
+            isUse = false;
         }
     }
 

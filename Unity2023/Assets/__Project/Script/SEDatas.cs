@@ -12,4 +12,7 @@ public class SEDatas : ScriptableObject
 {
     public AudioClip cardHover;
     public AudioClip drawCard;
+    public AudioClip mapOpen;
+    public AudioClip nailHit;
+    public AudioClip wallHit;
 }

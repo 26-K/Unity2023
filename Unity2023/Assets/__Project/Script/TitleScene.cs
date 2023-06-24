@@ -24,7 +24,7 @@ public class TitleScene : MonoBehaviour
         Camera.main.DOShakePosition(0.5f, 10.0f, 30, 30, true);
         //Camera.main.DOShakeRotation(0.3f, 4.0f, 30, 30, true);
         startFlash.SetActive(true);
-        DOVirtual.DelayedCall(1.0f, () =>
+        DOVirtual.DelayedCall(0.75f, () =>
         {
             fadeInAnim.Play("FadeIn");
             Camera.main.DOFieldOfView(50.0f, 1.0f);

@@ -8,6 +8,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     [SerializeField] SEDatas seDatas;
 
     public List<AudioClip> playWaitList = new List<AudioClip>();
+    int waitFlame = 0;
     protected override void UnityAwake()
     {
 
@@ -16,17 +17,19 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     // Start is called before the first frame update
     void Start()
     {
-        if (playWaitList.Count >= 1) //一度に同時になる可能性のある効果音はタイミングをずらして鳴らす
-        {
-            audioSource.PlayOneShot(playWaitList[0]);
-            playWaitList.RemoveAt(0);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        waitFlame--;
+        if (playWaitList.Count >= 1 && waitFlame <= 0) //一度に同時になる可能性のある効果音はタイミングをずらして鳴らす
+        {
+            waitFlame = 2;
+            audioSource.pitch = Random.Range(0.9f,1.1f);
+            audioSource.PlayOneShot(playWaitList[0]);
+            playWaitList.RemoveAt(0);
+        }
     }
 
     public void PlayCardHoverSound()
@@ -36,8 +39,15 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
     public void PlayCardDrawSound()
     {
-        Debug.LogError("まだ効果音をつけていない:{PlayCardDrawSound()}");
         AddPlayWaitSoundEffect(seDatas.drawCard);
+    }
+    public void PlayNailHitSound()
+    {
+        AddPlayWaitSoundEffect(seDatas.nailHit);
+    }
+    public void PlayWoodHitSound()
+    {
+        AddPlayWaitSoundEffect(seDatas.wallHit);
     }
 
     void AddPlayWaitSoundEffect(AudioClip audioClip)

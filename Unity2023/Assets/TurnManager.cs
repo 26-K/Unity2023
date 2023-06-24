@@ -11,7 +11,7 @@ public enum TurnState
 public class TurnManager : SingletonMonoBehaviour<TurnManager>
 {
     TurnState currentTurn;
-    public TurnState GetCurrentTurn => currentTurn; //経過ターン
+    public TurnState GetCurrentTurn => currentTurn; //現在のターン
     int elapsedTurn = 0;
     public int GetElapsedTurn => elapsedTurn; //経過ターン
     protected override void UnityAwake()
@@ -58,8 +58,8 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
         }
         InGameManager.Ins.GetCardManager().AllDiscard();
         InGameManager.Ins.GetCardManager().DiscardCardCheck();
-        currentTurn = TurnState.PlayerTurn_Wait;
         InGameManager.Ins.GetFieldManager().LaunchStart();
+        currentTurn = TurnState.PlayerTurn_Wait;
     }
 
     public void AllFinishPlayerTurn()
@@ -79,5 +79,7 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
         currentTurn = TurnState.PlayerTurn;
         InGameManager.Ins.GetCardManager().TurnStart();
         CurrentTurnManagerUI.Ins.ShowPlayerTurnAnim();
+        InGameManager.Ins.GetFieldManager().LaunchReady();
+        InGameManager.Ins.GetEnemyManager().TurnProgression();
     }
 }

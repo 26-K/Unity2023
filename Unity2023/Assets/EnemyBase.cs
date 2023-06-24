@@ -28,14 +28,18 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] Animator anim;
     public List<EnemyAction> enemyActions = new List<EnemyAction>();
     int currentAction = 0;
-    void Start()
+    bool alreadyAction = false;
+
+    public void Init()
     {
+        alreadyAction = false;
         currentAction = 0;
     }
 
     public void TurnProgression()
     {
         currentAction++;
+        alreadyAction = false;
     }
 
     public List<EnemyAction> GetEnemyActions()
@@ -66,5 +70,30 @@ public class EnemyBase : MonoBehaviour
             GetEnemyActions();
         }
         return retAction;
+    }
+
+    public void DoEnemyAction()
+    {
+        alreadyAction = true;
+        foreach (var a in GetEnemyActions())
+        {
+            if (a.actionType == EnemyActionType.Attack)
+            {
+
+            }
+            if (a.actionType == EnemyActionType.Defence)
+            {
+
+            }
+            if (a.actionType == EnemyActionType.Quote)
+            {
+                InGameManager.Ins.GetEnemyManager().DoQuote(this, a.quote);
+            }
+        }
+    }
+
+    public bool GetIsActionEnd()
+    {
+        return alreadyAction;
     }
 }

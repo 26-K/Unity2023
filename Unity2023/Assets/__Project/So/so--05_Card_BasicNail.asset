@@ -17,6 +17,6 @@ MonoBehaviour:
   id: 5
   rarity: 1
   sprite: {fileID: 21300000, guid: c9fad11032d00bd49a81419328d91d26, type: 3}
-  cost: 0
+  cost: 1
   cardName: "\u91D8"
   cardText: "\u5186\u5F62\u306E\u58C1\u3092\u914D\u7F6E\u3059\u308B"

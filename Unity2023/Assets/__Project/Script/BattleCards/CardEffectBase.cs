@@ -57,6 +57,7 @@ public class CardEffectBase : ScriptableObject
 
         var a = Instantiate(model, placementPosition, Quaternion.identity);
         InGameManager.Ins.GetFieldManager().SetObject(a);
+        //a.transform.localPosition = new Vector3(a.transform.position.x, a.transform.position.y, 0);
        
     }
 

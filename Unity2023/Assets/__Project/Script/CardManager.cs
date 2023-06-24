@@ -38,6 +38,7 @@ public class CardManager : MonoBehaviour
         {
             var card = Instantiate(cardBase, handManager.transform);
             var cardEffect = InGameManager.Ins.GetDatabase().GetCardData(b.id);
+            cardEffect.Init(parent);
             card.Init(handManager.GetHandRect, parentCanvas, cardEffect);
             card.SetDrawPile();
             deck.Add(card);
@@ -103,6 +104,7 @@ public class CardManager : MonoBehaviour
             BattleCardBase card = deck[0];
             deck.RemoveAt(0);
             hand.Add(card);
+            AudioManager.Ins.PlayCardDrawSound();
             card.SetHandPile();
         }
         else
@@ -197,6 +199,7 @@ public class CardManager : MonoBehaviour
     {
         var card = Instantiate(cardBase, handManager.transform);
         var cardEffect = GetRandom(InGameManager.Ins.GetDatabase().GetAllCards());
+        cardEffect.Init(parent);
         card.Init(handManager.GetHandRect, parentCanvas, cardEffect);
         AddHand(card);
     }

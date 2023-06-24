@@ -10,10 +10,12 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
     [SerializeField] PlayerInfoManager playerInfoManager;
     [SerializeField] CardManager cardManager;
     [SerializeField] FieldManager fieldManager;
+    [SerializeField] EnemyManager enemyManager;
     public DataBaseSO GetDatabase() => dataBaseSO;
     public CardManager GetCardManager() => cardManager;
     public FieldManager GetFieldManager() => fieldManager;
     public PlayerInfoManager GetPlayerInfoManager() => playerInfoManager;
+    public EnemyManager GetEnemyManager() => enemyManager;
 
     protected override void UnityAwake()
     {

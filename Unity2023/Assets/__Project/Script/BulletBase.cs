@@ -8,19 +8,30 @@ public class BulletBase : MonoBehaviour
     public Vector3 spd;
     public Rigidbody rgd;
 
-    
+    float sleepTime = 0.0f;
 
     public int pow = 1;
     int ignoreFlame = 7;
-
+    int hitcount = 0;
     public virtual void Launch(CharacterBase character)
     {
         ignoreFlame = 7;
+        sleepTime = 0.0f;
+        hitcount = 0;
     }
 
     public void Update()
     {
         ignoreFlame--;
+        if (rgd.IsSleeping())
+        {
+            sleepTime += Time.deltaTime;
+            if (sleepTime >= 3.0f)
+            {
+                this.transform.position = Vector3.down * 100;
+            }
+        }
+        
     }
 
     public void AddRigid(Vector3 vec)
@@ -37,13 +48,15 @@ public class BulletBase : MonoBehaviour
         Vector2 direction = Quaternion.Euler(0f, 0f, randomAngle) * this.transform.rotation.eulerAngles;
 
         // 弾き飛ばす力を計算
-        Vector2 force = direction.normalized * rgd.velocity.magnitude * 3.0f;
+        Vector2 force = direction.normalized * rgd.velocity.magnitude * 10000.0f;
         rgd.AddForce(force,ForceMode.Impulse);
         //rgd.velocity = rgd.velocity * -3;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        hitcount++;
+        Debug.Log($"combo{hitcount}");
         if (ignoreFlame > 0)
         {
             Debug.Log("ignore");
