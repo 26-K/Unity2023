@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleScene : MonoBehaviour
 {
@@ -22,7 +23,10 @@ public class TitleScene : MonoBehaviour
         Camera.main.DOShakePosition(0.5f, 10.0f, 30, 30, true);
         //Camera.main.DOShakeRotation(0.3f, 4.0f, 30, 30, true);
         startFlash.SetActive(true);
-        DOVirtual.DelayedCall(1.0f, () => Debug.Log("次のシーンへ"));
+        DOVirtual.DelayedCall(1.0f, () =>
+        {
+            SceneManager.LoadScene("MainInGameScene");
+        });
         anim.Play("GameStart");
     }
 }

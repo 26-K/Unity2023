@@ -30,6 +30,40 @@ public class CardManager : MonoBehaviour
     public void BattleStart()
     {
         maxMana = 3; //レリックの効果等で最大マナが変わるかもしれん、
+
+        DestroyAllBattleCards(); //手札、山札、捨て札のカードを消す
+
+        //現在のデッキのカードを山札に加える
+        foreach (var b in parent.GetPlayerInfoManager().battleCardStatuses)
+        {
+            var card = Instantiate(cardBase, handManager.transform);
+            var cardEffect = InGameManager.Ins.GetDatabase().GetCardData(b.id);
+            card.Init(handManager.GetHandRect, parentCanvas, cardEffect);
+            card.SetDrawPile();
+            deck.Add(card);
+        }
+        drawPlie.SelfUpdate();
+    }
+
+    private void DestroyAllBattleCards()
+    {
+        foreach (var a in deck)
+        {
+            Destroy(a);
+        }
+
+        foreach (var a in discardPile)
+        {
+            Destroy(a);
+        }
+
+        foreach (var a in hand)
+        {
+            Destroy(a);
+        }
+        deck.Clear(); // 山札のカードリスト
+        discardPile.Clear(); // 捨て札のカードリスト
+        hand.Clear(); // 手札のカードリスト
     }
 
     public void TurnStart()

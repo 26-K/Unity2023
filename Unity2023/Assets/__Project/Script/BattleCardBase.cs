@@ -229,6 +229,10 @@ public class BattleCardBase : MonoBehaviour
         this.targetPos.y = 0;
         this.targetScale = Vector2.zero;
     }
+    public void SetDrawPile()
+    {
+        nowPile = NowPile.DrawPile;
+    }
 
     public NowPile GetNowPile()
     {

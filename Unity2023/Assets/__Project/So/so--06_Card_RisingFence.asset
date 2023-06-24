@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee624b54b616244b83b6f95891138b3, type: 3}
-  m_Name: so--Card_RisingFence
+  m_Name: so--06_Card_RisingFence
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
+  model: {fileID: -2019535571299681705, guid: 26906902250641449b7556207b92b702, type: 3}
   isSet: 1
   id: 6
   rarity: 1

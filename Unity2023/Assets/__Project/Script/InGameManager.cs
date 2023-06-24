@@ -13,6 +13,7 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
     public DataBaseSO GetDatabase() => dataBaseSO;
     public CardManager GetCardManager() => cardManager;
     public FieldManager GetFieldManager() => fieldManager;
+    public PlayerInfoManager GetPlayerInfoManager() => playerInfoManager;
 
     protected override void UnityAwake()
     {
@@ -25,6 +26,12 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
         pl.Init();
         playerInfoManager.Init(this);
         cardManager.Init(this);
+        GameStart(); //todo ゲームがスタートした時の処理をここで呼んでいる、他の場所で呼ばせたい
+    }
+
+    public void GameStart()
+    {
+        playerInfoManager.GameStartInit();
     }
 
     private void Update()
