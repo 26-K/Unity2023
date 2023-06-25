@@ -15,6 +15,7 @@ public class CurrentTurnManagerUI : SingletonMonoBehaviour<CurrentTurnManagerUI>
     }
     public void ShowBattleStartAnim()
     {
+        AudioManager.Ins.PlayBattleStartSound();
         sizeObj.SetActive(true);
         anim.Play("BattleStart");
         turnText.text = "Battle Start";
@@ -23,6 +24,7 @@ public class CurrentTurnManagerUI : SingletonMonoBehaviour<CurrentTurnManagerUI>
 
     public void ShowPlayerTurnAnim()
     {
+        AudioManager.Ins.PlayTurnStartSound();
         sizeObj.SetActive(true);
         anim.Play("TurnStart");
         turnText.text = "Player Turn";

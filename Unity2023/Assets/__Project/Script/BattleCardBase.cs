@@ -145,6 +145,7 @@ public class BattleCardBase : MonoBehaviour
     public void OnPointerDown()
     {
         isPush = true;
+        AudioManager.Ins.PlayCardSelectSound();
     }
 
     public void OnPointerUp()

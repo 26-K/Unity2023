@@ -18,17 +18,6 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
     {
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            BattleStart();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            FinishEnemyTurn();
-        }
-    }
 
     public void BattleStart()
     {
@@ -81,5 +70,6 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
         CurrentTurnManagerUI.Ins.ShowPlayerTurnAnim();
         InGameManager.Ins.GetFieldManager().LaunchReady();
         InGameManager.Ins.GetEnemyManager().TurnProgression();
+        InGameManager.Ins.GetPlayerInfoManager().TurnProgression();
     }
 }

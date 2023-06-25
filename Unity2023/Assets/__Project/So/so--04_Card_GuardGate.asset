@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f5a20c5918cfe4b944a72ba6cfaecb, type: 3}
   m_Name: so--04_Card_GuardGate
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
+  model: {fileID: -5194363853377256233, guid: c78303d43487e9e49bc06fcbd5ff8a33, type: 3}
   isSet: 1
   id: 4
   rarity: 2

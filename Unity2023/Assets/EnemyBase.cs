@@ -27,6 +27,7 @@ public class EnemyBase : MonoBehaviour
 {
     [SerializeField] int BaseHP = 10;
     int currentHP = 1;
+    int shield = 0;
     [SerializeField] Animator anim;
     public List<EnemyAction> enemyActions = new List<EnemyAction>();
     int currentAction = 0;
@@ -37,8 +38,11 @@ public class EnemyBase : MonoBehaviour
         alreadyAction = false;
         currentAction = 0;
         currentHP = BaseHP;
+        shield = 0;
     }
 
+    public int GetBaseHP() => BaseHP;
+    public int GetNowHP() => currentHP;
     public void TurnProgression()
     {
         currentAction++;
@@ -87,18 +91,30 @@ public class EnemyBase : MonoBehaviour
         return retAction;
     }
 
+    /// <summary>
+    /// 敵の行動
+    /// </summary>
     public void DoEnemyAction()
     {
+        if (GetNowHP() <= 0) //倒されている場合は行動しない
+        {
+            alreadyAction = true;
+            return;
+        }
+        shield = 0;
         alreadyAction = true;
         foreach (var a in GetEnemyActions())
         {
             if (a.actionType == EnemyActionType.Attack)
             {
-
+                anim.Play("Attack");
+                InGameManager.Ins.GetPlayerInfoManager().AddDamage(a.actionPow);
             }
             if (a.actionType == EnemyActionType.Defence)
             {
-
+                anim.Play("Attack"); //時間が無いから防御アクションでも攻撃アニメで
+                shield += a.actionPow;
+                InGameManager.Ins.GetEnemyManager().Refresh();
             }
             if (a.actionType == EnemyActionType.Quote)
             {

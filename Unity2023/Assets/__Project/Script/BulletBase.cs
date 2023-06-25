@@ -19,6 +19,18 @@ public class BulletBase : MonoBehaviour
         sleepTime = 0.0f;
         hitcount = 0;
     }
+    public void Launch(int pow = 5)
+    {
+        ignoreFlame = 7;
+        sleepTime = 0.0f;
+        hitcount = 0;
+        this.pow = pow;
+    }
+
+    public int CalcPow()
+    {
+        return hitcount + pow;
+    }
 
     public void Update()
     {
@@ -56,6 +68,10 @@ public class BulletBase : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         hitcount++;
+        if (hitcount % 5 == 0)
+        {
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collision.transform, $"Combo{hitcount}");
+        }
         Debug.Log($"combo{hitcount}");
         if (ignoreFlame > 0)
         {

@@ -5239,6 +5239,7 @@ GameObject:
   - component: {fileID: 5663290058724093556}
   - component: {fileID: 3793182363715207877}
   - component: {fileID: 3706774052951662792}
+  - component: {fileID: -5194363853377256233}
   m_Layer: 11
   m_Name: GuardZone
   m_TagString: Panel
@@ -5346,6 +5347,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5194363853377256233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302473815384049011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab3d75aa009a6a45a0fb81e1c4929ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6534122978082198879
 GameObject:
   m_ObjectHideFlags: 0

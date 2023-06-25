@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5834d3e2638ac7949a28530ae2e28c74, type: 3}
   m_Name: DataBaseSO
   m_EditorClassIdentifier: 
+  enemyDataBaseSo: {fileID: 11400000, guid: 28ce11a86baa0e142b4f17af91fe65af, type: 2}
   rarityImages:
   - {fileID: 21300000, guid: 35d7e6588f1f34db1b9a5e62f4efdf77, type: 3}
   - {fileID: 21300000, guid: 10d23572713d041c596abf5c00be11dc, type: 3}
@@ -30,8 +31,8 @@ MonoBehaviour:
   firstCards:
   - {fileID: 11400000, guid: 9828869f8de1c474f87541a8fadf92c0, type: 2}
   - {fileID: 11400000, guid: d52d8e4d57d3113499ea99e431ce8db8, type: 2}
+  - {fileID: 11400000, guid: d52d8e4d57d3113499ea99e431ce8db8, type: 2}
   - {fileID: 11400000, guid: 402aaa027a941b049979a88e051e9f6e, type: 2}
   - {fileID: 11400000, guid: f7b7edf3b7d627d4aa4a5742ded4bb30, type: 2}
   - {fileID: 11400000, guid: 1bf36a51628f18940886cf7ee4cdcfae, type: 2}
   - {fileID: 11400000, guid: 6b3c8805d55dc164694cfb678f4dff60, type: 2}
-  - {fileID: 11400000, guid: 0e692280b51be1f4ab2945fa16870275, type: 2}

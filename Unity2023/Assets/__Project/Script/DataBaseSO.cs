@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DataBaseSO : ScriptableObject
 {
     [SerializeField]
+    public EnemyDataBaseSo enemyDataBaseSo;
     public List<Sprite> rarityImages;
     public List<CardEffectBase> cards;
     [LabelText("初期デッキ")]public List<CardEffectBase> firstCards = new List<CardEffectBase>();
@@ -27,6 +28,22 @@ public class DataBaseSO : ScriptableObject
     public CardEffectBase GetCardData(int id)
     {
         return cards.Find(x => x.id == id);
+    }
+    public EnemyBase GetRandomEnemy(int floor)
+    {
+        List<EnemyBase> enemys = new List<EnemyBase>();
+        foreach (var item in enemyDataBaseSo.enemyDatas)
+        {
+            if (item.minFloor <= floor && floor <= item.maxFloor)
+            {
+                enemys.Add(item.enemy);
+            }
+        }
+        return GetRandom(enemys);
+    }
+    T GetRandom<T>(List<T> Params)
+    {
+        return Params[Random.Range(0, Params.Count)];
     }
 }
 

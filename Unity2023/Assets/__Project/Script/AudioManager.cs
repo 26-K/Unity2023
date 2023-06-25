@@ -8,6 +8,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     [SerializeField] SEDatas seDatas;
 
     public List<AudioClip> playWaitList = new List<AudioClip>();
+    public List<AudioClip> playWaitIgnorePitchList = new List<AudioClip>();
     int waitFlame = 0;
     protected override void UnityAwake()
     {
@@ -30,6 +31,13 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
             audioSource.PlayOneShot(playWaitList[0]);
             playWaitList.RemoveAt(0);
         }
+        else if (playWaitIgnorePitchList.Count >= 1 && waitFlame <= 0)
+        {
+            waitFlame = 2;
+            audioSource.pitch = 1.0f;
+            audioSource.PlayOneShot(playWaitIgnorePitchList[0]);
+            playWaitIgnorePitchList.RemoveAt(0);
+        }
     }
 
     public void PlayCardHoverSound()
@@ -39,7 +47,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
     public void PlayCardDrawSound()
     {
-        AddPlayWaitSoundEffect(seDatas.drawCard);
+        AddPlayWaitIgnorePitchSoundEffect(seDatas.drawCard);
     }
     public void PlayNailHitSound()
     {
@@ -49,10 +57,31 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     {
         AddPlayWaitSoundEffect(seDatas.wallHit);
     }
+    public void PlayCardSelectSound()
+    {
+        audioSource.PlayOneShot(seDatas.cardSelect);
+    }
 
     public void PlayOneMoreSound()
     {
         audioSource.PlayOneShot(seDatas.oneMore);
+    }
+    public void PlayBattleStartSound()
+    {
+        audioSource.PlayOneShot(seDatas.battleStart);
+    }
+    public void PlayTurnStartSound()
+    {
+        audioSource.pitch = 1.0f;
+        audioSource.PlayOneShot(seDatas.turnStart);
+    }
+    public void PlayGateInSound()
+    {
+        AddPlayWaitSoundEffect(seDatas.gateIn);
+    }
+    public void PlaySetObjectSound()
+    {
+        AddPlayWaitSoundEffect(seDatas.setObject);
     }
     void AddPlayWaitSoundEffect(AudioClip audioClip)
     {
@@ -62,5 +91,14 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
             return;
         }
         playWaitList.Add(audioClip);
+    }
+    void AddPlayWaitIgnorePitchSoundEffect(AudioClip audioClip)
+    {
+        int maxWaitSoundEffectCount = 15;
+        if (playWaitIgnorePitchList.Count >= maxWaitSoundEffectCount) //連続でならす効果音待ちが多すぎる場合鳴らさない
+        {
+            return;
+        }
+        playWaitIgnorePitchList.Add(audioClip);
     }
 }

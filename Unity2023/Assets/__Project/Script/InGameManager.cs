@@ -31,11 +31,19 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
         playerInfoManager.Init(this);
         cardManager.Init(this);
         GameStart(); //todo ゲームがスタートした時の処理をここで呼んでいる、他の場所で呼ばせたい
+        
     }
 
     public void GameStart()
     {
         playerInfoManager.GameStartInit();
+        MapManager.Ins.GenerateMap();
+    }
+
+    public void BattleStart()
+    {
+        TurnManager.Ins.BattleStart();
+        enemyManager.BattleStart();
     }
 
     private void Update()

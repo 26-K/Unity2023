@@ -6,7 +6,12 @@ public class Object_AttackGate : SetObjectBase
 {
     public override void TriggerEnterAction(Collider collider)
     {
-        InGameManager.Ins.GetEnemyManager().AddDamage(5);
+        var a = collider.GetComponent<BulletBase>();
+        if (a != null)
+        {
+            InGameManager.Ins.GetEnemyManager().AddDamage(a.CalcPow());
+        }
+        AudioManager.Ins.PlayGateInSound();
         var randval = Random.Range(0, 3);
         if (randval == 0)
         {

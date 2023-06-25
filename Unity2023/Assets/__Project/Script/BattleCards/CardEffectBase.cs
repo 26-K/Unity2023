@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using DG.Tweening;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,7 +57,9 @@ public class CardEffectBase : ScriptableObject
         model.transform.position = placementPosition;
 
         var a = Instantiate(model, placementPosition, Quaternion.identity);
+
         InGameManager.Ins.GetFieldManager().SetObject(a);
+        AudioManager.Ins.PlaySetObjectSound();
         //a.transform.localPosition = new Vector3(a.transform.position.x, a.transform.position.y, 0);
        
     }

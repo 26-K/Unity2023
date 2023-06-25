@@ -16,4 +16,9 @@ public class SEDatas : ScriptableObject
     public AudioClip nailHit;
     public AudioClip wallHit;
     public AudioClip oneMore;
+    public AudioClip gateIn;
+    public AudioClip battleStart;
+    public AudioClip turnStart;
+    public AudioClip setObject;
+    public AudioClip cardSelect;
 }

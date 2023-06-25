@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using DG.Tweening;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,6 +71,7 @@ public class FieldManager : MonoBehaviour
             Vector3 launchPos = a.transform.position;
             launchPos.z = 0;
             var b = Instantiate(pfBullet, baseField.transform);
+            b.Launch();
             b.transform.position = launchPos;
             b.transform.localPosition = new Vector3(b.transform.localPosition.x, b.transform.localPosition.y, -1);
             b.AddRigid(Vector3.down);
@@ -120,7 +122,10 @@ public class FieldManager : MonoBehaviour
     {
         obj.transform.parent = this.objectParent.transform;
         obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, 0);
-        obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y, 0);
+        Vector3 targetPos = obj.transform.localPosition;
+        targetPos.z = 0;
+        obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y + 0.1f, 0);
+        obj.transform.DOLocalMove(targetPos - Vector3.up * 0.1f, 0.3f);
         setObjects.Add(obj);
     }
 }

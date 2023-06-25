@@ -43,6 +43,7 @@ public class CardManager : MonoBehaviour
             card.SetDrawPile();
             deck.Add(card);
         }
+        ShuffleDeck();
         drawPlie.SelfUpdate();
     }
 
