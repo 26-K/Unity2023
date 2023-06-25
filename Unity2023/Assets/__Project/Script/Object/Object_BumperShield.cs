@@ -9,7 +9,7 @@ public class Object_BumperShield : SetObjectBase
     {
         anim.Play("default");
         collision.gameObject.GetComponent<BulletBase>().AddBounce(2.8f);
-        InGameManager.Ins.GetPlayerInfoManager().AddShield(2);
+        InGameManager.Ins.GetPlayerInfoManager().AddShield(1);
         AudioManager.Ins.PlayNailHitSound();
     }
 }

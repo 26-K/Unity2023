@@ -43,7 +43,6 @@ public class BattleRewardManager : MonoBehaviour
     public void HideAndNextFloor()
     {
         InGameManager.Ins.NextFloor();
-        Hide();
     }
 
     public void Hide()

@@ -11,7 +11,9 @@ public class TitleScene : MonoBehaviour
     [SerializeField] GameObject startFlash;
     [SerializeField] Animator anim;
     [SerializeField] Animator fadeInAnim;
+    [SerializeField] AudioSource audioSource;
     // Start is called before the first frame update
+    bool isPlayBGM = true;
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -19,8 +21,16 @@ public class TitleScene : MonoBehaviour
         DOVirtual.DelayedCall(1.5f, ()=> startButton.SetActive(true));
     }
 
+    private void Update()
+    {
+        if (isPlayBGM == false)
+        {
+            audioSource.volume -= Time.deltaTime;
+        }
+    }
     public void PushStartButton()
     {
+        isPlayBGM = false;
         Camera.main.DOShakePosition(0.5f, 10.0f, 30, 30, true);
         //Camera.main.DOShakeRotation(0.3f, 4.0f, 30, 30, true);
         startFlash.SetActive(true);
