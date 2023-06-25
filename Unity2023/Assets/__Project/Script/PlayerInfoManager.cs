@@ -41,18 +41,18 @@ public class PlayerInfoManager : MonoBehaviour
     public void AddDamage(int val)
     {
         int totalDamage = val;
-        if (totalDamage > guard)
+        if (totalDamage > guard) //防ぎきれない
         {
             totalDamage -= guard;
             guard = 0;
             player.PlayDamage();
         }
-        else
+        else //ガード
         {
             totalDamage = 0;
             guard -= totalDamage;
         }
-        player.PlayDamage();
+        hp -= totalDamage;
         InGameManager.Ins.GetUI_PopUpManager().ShowPopUpTextSub(player.transform, $"{totalDamage}", "DamagePopUp");
         hpGauge.Refresh(hp, maxHp, guard);
     }

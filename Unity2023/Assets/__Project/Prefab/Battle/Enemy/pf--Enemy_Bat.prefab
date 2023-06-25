@@ -77,8 +77,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b084221f0d63f7e46bded9c4481fbf4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseHP: 30
   anim: {fileID: 158957783092592183}
   enemyActions:
+  - actionType: 2
+    actionPow: 1
+    quote: "\u30AD\u30FC\uFF01\u30AD\u30FC\uFF01"
+  - actionType: 3
+    actionPow: 1
+    quote: 
   - actionType: 0
     actionPow: 5
     quote: 
@@ -94,12 +101,6 @@ MonoBehaviour:
   - actionType: 0
     actionPow: 8
     quote: 
-  - actionType: 3
-    actionPow: 1
-    quote: 
-  - actionType: 2
-    actionPow: 1
-    quote: "\u30AD\u30FC\uFF01\u30AD\u30FC\uFF01"
   - actionType: 3
     actionPow: 1
     quote: 

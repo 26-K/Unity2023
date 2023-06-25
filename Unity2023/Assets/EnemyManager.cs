@@ -102,7 +102,7 @@ public class EnemyManager : MonoBehaviour
         foreach (var a in enemys)
         {
             liveEnemy += a.GetNowHP() >= 1 ? 1 : 0;
-            statusGauge.Refresh(a.GetNowHP(), a.GetBaseHP());
+            statusGauge.Refresh(a.GetNowHP(), a.GetBaseHP(),a.GetShield());
         }
         statusGauge.gameObject.SetActive(liveEnemy > 0);
     }

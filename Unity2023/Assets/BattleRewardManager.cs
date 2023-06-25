@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class BattleRewardManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<BattleCardBase> rewardCards = new List<BattleCardBase>();
 
-    // Update is called once per frame
-    void Update()
+    public void LotteryRewardCards(int cnt = 3)
     {
-        
+
     }
 }

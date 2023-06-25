@@ -43,6 +43,7 @@ public class EnemyBase : MonoBehaviour
 
     public int GetBaseHP() => BaseHP;
     public int GetNowHP() => currentHP;
+    public int GetShield() => shield;
     public void TurnProgression()
     {
         currentAction++;
@@ -63,7 +64,7 @@ public class EnemyBase : MonoBehaviour
     }
     public List<EnemyAction> GetEnemyActions()
     {
-        int actionCnt = 0;
+        int actionCnt = 1;
         List<EnemyAction> retAction = new List<EnemyAction>();
         bool addMode = false;
         foreach (var a in enemyActions) //敵の行動パターンの取得
@@ -85,8 +86,26 @@ public class EnemyBase : MonoBehaviour
 
         if (retAction.Count == 0) //敵の行動パターンが見つからなかった場合アクションIDを0に戻して最初から
         {
-            currentAction = 0;
-            GetEnemyActions();
+            currentAction = 1;
+            actionCnt = 1;
+
+            foreach (var a in enemyActions) //敵の行動パターンの取得
+            {
+                if (currentAction == actionCnt) //現在のターンと一致する区切りの場合Returnする行動パターンに追加
+                {
+                    addMode = true;
+                    retAction.Add(a);
+                }
+                if (a.actionType == EnemyActionType.End) //end区切りで取得
+                {
+                    if (addMode == true) //1つでも取得していた場合終わり
+                    {
+                        break;
+                    }
+                    actionCnt++;
+                }
+            }
+
         }
         return retAction;
     }
@@ -102,6 +121,7 @@ public class EnemyBase : MonoBehaviour
             return;
         }
         shield = 0;
+        InGameManager.Ins.GetEnemyManager().Refresh();
         alreadyAction = true;
         foreach (var a in GetEnemyActions())
         {
@@ -116,10 +136,11 @@ public class EnemyBase : MonoBehaviour
                 shield += a.actionPow;
                 InGameManager.Ins.GetEnemyManager().Refresh();
             }
-            if (a.actionType == EnemyActionType.Quote)
+            if (a.actionType == EnemyActionType.Quote) //喋るだけ
             {
                 InGameManager.Ins.GetEnemyManager().DoQuote(this, a.quote);
             }
+            Debug.Log($"{a.actionType}");
         }
     }
 

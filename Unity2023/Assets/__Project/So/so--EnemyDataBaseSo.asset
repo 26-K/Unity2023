@@ -16,3 +16,6 @@ MonoBehaviour:
   - minFloor: 0
     maxFloor: 4
     enemy: {fileID: 1302736074445084821, guid: e91459e55906fd24bbbc4dfe8e2c38a6, type: 3}
+  - minFloor: 0
+    maxFloor: 4
+    enemy: {fileID: 8233281643172404352, guid: edf9f7793a393e744b634222343ae11b, type: 3}
