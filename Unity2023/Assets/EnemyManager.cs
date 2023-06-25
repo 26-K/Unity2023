@@ -17,8 +17,25 @@ public class EnemyManager : MonoBehaviour
     {
         Refresh();
     }
+
+    public bool IsDestroyAllEnemy()
+    {
+        foreach (var a in enemys)
+        {
+            if (a.GetNowHP() > 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     public void BattleStart()
     {
+        foreach (var a in enemys)
+        {
+            Destroy(a.gameObject);
+        }
+        enemys.Clear();
         var b = Instantiate(InGameManager.Ins.GetDatabase().GetRandomEnemy(InGameManager.Ins.GetPlayerInfoManager().floor), this.transform);
         enemys.Add(b);
         foreach (var a in enemys)
@@ -33,6 +50,7 @@ public class EnemyManager : MonoBehaviour
         if (a != null)
         {
             InGameManager.Ins.GetPlayerInfoManager().player.PlayAttack();
+            InGameManager.Ins.GetPlayerInfoManager().SetDiffDamage(damageVal);
             a.ObtainDamage(damageVal);
             Instantiate(damageEffectFire).transform.position = a.transform.position;
             InGameManager.Ins.GetUI_PopUpManager().ShowPopUpTextSub(a.transform, subCamera, $"{damageVal}", "DamagePopUp");

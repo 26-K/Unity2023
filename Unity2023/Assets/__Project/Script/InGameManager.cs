@@ -12,12 +12,16 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
     [SerializeField] FieldManager fieldManager;
     [SerializeField] EnemyManager enemyManager;
     [SerializeField] UI_PopUpManager popUpManager;
+    [SerializeField] BattleRewardManager battleRewardManager;
+    [SerializeField] GameOverUI gameOverUI;
     public DataBaseSO GetDatabase() => dataBaseSO;
     public CardManager GetCardManager() => cardManager;
     public FieldManager GetFieldManager() => fieldManager;
     public PlayerInfoManager GetPlayerInfoManager() => playerInfoManager;
     public EnemyManager GetEnemyManager() => enemyManager;
     public UI_PopUpManager GetUI_PopUpManager() => popUpManager;
+    public BattleRewardManager GetBattleRewardManager() => battleRewardManager;
+    public GameOverUI GetGameOverUI() => gameOverUI;
 
     protected override void UnityAwake()
     {
@@ -31,19 +35,32 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
         playerInfoManager.Init(this);
         cardManager.Init(this);
         GameStart(); //todo ゲームがスタートした時の処理をここで呼んでいる、他の場所で呼ばせたい
-        
+        statusUI.Init(this);
     }
 
     public void GameStart()
     {
         playerInfoManager.GameStartInit();
         MapManager.Ins.GenerateMap();
+        ShowMap();
+    }
+
+    public void NextFloor()
+    {
+        playerInfoManager.floor++; 
+        ShowMap();
+    }
+    public void ShowMap()
+    {
+        MapManager.Ins.ShowMapSelect();
+        battleRewardManager.Hide();
     }
 
     public void BattleStart()
     {
         TurnManager.Ins.BattleStart();
         enemyManager.BattleStart();
+        fieldManager.ResetField();
     }
 
     private void Update()

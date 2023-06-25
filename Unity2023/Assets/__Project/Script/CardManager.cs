@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    [SerializeField] public BattleCardBase cardBase; // 山札のカードリスト
+    [SerializeField] public BattleCardBase cardBase; // カードのベースプレハブ
     public List<BattleCardBase> deck; // 山札のカードリスト
     public List<BattleCardBase> discardPile; // 捨て札のカードリスト
     public List<BattleCardBase> hand; // 手札のカードリスト
@@ -194,6 +194,10 @@ public class CardManager : MonoBehaviour
             manaManager.PlayChargeManaAnim();
         }
         manaManager.Refresh();
+        foreach (var a in hand)
+        {
+            a.Refresh();
+        }
     }
 
     public void GenerateRandomCardAddHand()

@@ -15,7 +15,7 @@ MonoBehaviour:
   model: {fileID: -5194363853377256233, guid: c78303d43487e9e49bc06fcbd5ff8a33, type: 3}
   isSet: 1
   id: 4
-  rarity: 2
+  rarity: 3
   sprite: {fileID: 21300000, guid: a96d11a206b4f8641898747397d335e3, type: 3}
   cost: 1
   cardName: "\u30AC\u30FC\u30C9\u30B2\u30FC\u30C8"

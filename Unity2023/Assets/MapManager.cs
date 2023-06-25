@@ -104,6 +104,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     public void ShowMapSelect()
     {
         isMapMoveMode = true;
+        sizeObj.SetActive(true);
         foreach (var a in uI_MassDatas)
         {
             a.Refresh(InGameManager.Ins.GetPlayerInfoManager().floor);
@@ -120,6 +121,21 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
         }).OnComplete(() =>
         {
             InGameManager.Ins.BattleStart();
+        }
+        );
+    }
+    public void PushRestButton()
+    {
+        isMapMoveMode = false;
+        UI_SceneChangeAnim.Ins.PlayAnim();
+        DOVirtual.DelayedCall(0.4f, () =>
+        {
+
+        }).OnComplete(() =>
+        {
+            int val = InGameManager.Ins.GetPlayerInfoManager().AddRatioHeal(0.3f);
+            CurrentTurnManagerUI.Ins.ShowOtherAnim($"回復ゾーンでHPを{val}回復!");
+            InGameManager.Ins.NextFloor();
         }
         );
     }

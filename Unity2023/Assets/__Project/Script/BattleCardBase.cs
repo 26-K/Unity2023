@@ -40,13 +40,25 @@ public class BattleCardBase : MonoBehaviour
     Vector2 marginCard = new Vector2(0.0f, -200.0f);
     float drawPileWaitTimer = 0.0f;
     CardEffectBase cardEffect;
+    bool isRewardMode = false;
     public void Init(RectTransform rect, Canvas parentCanvas, CardEffectBase cardEffect)
     {
+        isRewardMode = false;
         this.handRect = rect;
         this.parentRect = parentCanvas.GetComponent<RectTransform>();
         this.canvas = parentCanvas;
         margin = parentRect.sizeDelta * 0.5f;
 
+        this.cardEffect = cardEffect;
+        this.cardImage.sprite = cardEffect.sprite;
+        cardNameText.text = cardEffect.cardName; //カード名
+        cardDescText.text = cardEffect.cardText; //カードテキスト(説明)
+        costText.text = $"{cardEffect.cost}";
+        backRarityImage.sprite = InGameManager.Ins.GetDatabase().GetCardBackImage((int)cardEffect.rarity);
+    }
+    public void Init(CardEffectBase cardEffect)
+    {
+        isRewardMode = true;
         this.cardEffect = cardEffect;
         this.cardImage.sprite = cardEffect.sprite;
         cardNameText.text = cardEffect.cardName; //カード名
@@ -60,7 +72,7 @@ public class BattleCardBase : MonoBehaviour
     /// </summary>
     public void Refresh()
     {
-        bool enoughCost = true;
+        bool enoughCost = InGameManager.Ins.GetCardManager().mana >= this.cardEffect.cost;
         costText.color = (enoughCost || nowPile != NowPile.HandPile) ? Color.white : Color.red; //手札にカードがあってかつコストが足りない場合赤文字
     }
 
@@ -72,6 +84,10 @@ public class BattleCardBase : MonoBehaviour
     }
     private void Update()
     {
+        if (isRewardMode)
+        {
+            return;
+        }
         drawPileWaitTimer -= Time.deltaTime;
         if (nowPile == NowPile.DrawPile)
         {
@@ -146,6 +162,16 @@ public class BattleCardBase : MonoBehaviour
     {
         isPush = true;
         AudioManager.Ins.PlayCardSelectSound();
+        if (isRewardMode)
+        {
+            isRewardMode = false;
+
+            BattleCardStatus bt = new BattleCardStatus();
+            bt.id = this.cardEffect.id;
+            bt.level = 0;
+            InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Add(bt);
+            InGameManager.Ins.NextFloor();
+        }
     }
 
     public void OnPointerUp()

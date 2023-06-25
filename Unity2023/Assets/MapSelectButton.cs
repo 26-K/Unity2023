@@ -20,11 +20,18 @@ public class MapSelectButton : MonoBehaviour
         }
         else if (mapMassType == MapMassType.Rest)
         {
-
+            MapManager.Ins.PushRestButton();
         }
         else if (mapMassType == MapMassType.Event)
         {
-
+            if(Random.Range(0,1) == 1) //todo イベント
+            {
+                MapManager.Ins.PushRestButton();
+            }
+            else
+            {
+                MapManager.Ins.PushBattleButton();
+            }
         }
     }
 

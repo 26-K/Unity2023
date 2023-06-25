@@ -51,8 +51,18 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
         currentTurn = TurnState.PlayerTurn_Wait;
     }
 
+    /// <summary>
+    /// 全てのPLの行動が完了した時に戦闘終了チェック
+    /// </summary>
     public void AllFinishPlayerTurn()
     {
+        if (InGameManager.Ins.GetEnemyManager().IsDestroyAllEnemy())
+        {
+            Debug.Log("Youwin");
+            currentTurn = TurnState.PlayerTurn;
+            InGameManager.Ins.GetBattleRewardManager().ShowAndLotteryRewardCards();
+            return;
+        }
         currentTurn = TurnState.EnemyTurn;
         CurrentTurnManagerUI.Ins.ShowEnemyTurnAnim();
     }

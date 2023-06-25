@@ -32,6 +32,11 @@ public class BulletBase : MonoBehaviour
         return hitcount + pow;
     }
 
+    public int GetCombo()
+    {
+        return hitcount;
+    }
+
     public void Update()
     {
         ignoreFlame--;
@@ -70,7 +75,7 @@ public class BulletBase : MonoBehaviour
         hitcount++;
         if (hitcount % 5 == 0)
         {
-            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collision.transform, $"Combo{hitcount}");
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collision.transform, $"Combo{hitcount}\nPow+{hitcount}");
         }
         Debug.Log($"combo{hitcount}");
         if (ignoreFlame > 0)

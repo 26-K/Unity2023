@@ -98,6 +98,7 @@ public class FieldManager : MonoBehaviour
             BulletBase obj = bulletBases[i];
             if (obj.transform.position.y <= removeZone.transform.position.y)
             {
+                InGameManager.Ins.GetPlayerInfoManager().SetMaxCombo(obj.GetCombo());
                 Destroy(obj.gameObject);
                 bulletBases.RemoveAt(i);
             }

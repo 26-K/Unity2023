@@ -12,10 +12,15 @@ public class PlayerInfoManager : MonoBehaviour
     public PlayerManager player;
     public UI_StatusGauge hpGauge;
     public List<BattleCardStatus> battleCardStatuses = new List<BattleCardStatus>();
-
+    int maxCombo = 0;
+    int diffDamage = 0;
+    int overkillDamage = 0;
     public void Init(InGameManager inGameManager)
     {
         this.parent = inGameManager;
+        maxCombo = 0;
+        diffDamage = 0;
+        overkillDamage = 0;
     }
 
     public void GameStartInit()
@@ -32,6 +37,18 @@ public class PlayerInfoManager : MonoBehaviour
         }
         hpGauge.Refresh(hp, maxHp, guard);
     }
+
+    public void SetMaxCombo(int val)
+    {
+        maxCombo = Mathf.Max(val, maxCombo);
+    }
+
+    public void SetDiffDamage(int changeVal)
+    {
+        diffDamage += changeVal;
+    }
+    public int GetDiffDamage => diffDamage;
+    public int GetMaxCombo => maxCombo;
 
     public void TurnProgression()
     {
@@ -53,10 +70,22 @@ public class PlayerInfoManager : MonoBehaviour
             guard -= totalDamage;
         }
         hp -= totalDamage;
+        SetDiffDamage(-totalDamage);
         InGameManager.Ins.GetUI_PopUpManager().ShowPopUpTextSub(player.transform, $"{totalDamage}", "DamagePopUp");
         hpGauge.Refresh(hp, maxHp, guard);
+        if (hp <= 0)
+        {
+            player.PlayDie();
+            InGameManager.Ins.GetGameOverUI().ShowGameOverUI();
+        }
     }
 
+    public int AddRatioHeal(float rate)
+    {
+        int retVal = (int)((float)maxHp * rate);
+        AddHeal(retVal);
+        return retVal;
+    }
     public void AddHeal(int val)
     {
         AddHp(val);
@@ -70,9 +99,9 @@ public class PlayerInfoManager : MonoBehaviour
     public void AddHp(int val)
     {
         hp += val;
-        if (hp > val)
+        if (hp > maxHp)
         {
-            hp = val;
+            hp = maxHp;
         }
         hpGauge.Refresh(hp, maxHp, guard);
     }
