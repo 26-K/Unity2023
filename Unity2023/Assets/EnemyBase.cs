@@ -25,6 +25,8 @@ public class EnemyAction
 
 public class EnemyBase : MonoBehaviour
 {
+    [SerializeField] int BaseHP = 10;
+    int currentHP = 1;
     [SerializeField] Animator anim;
     public List<EnemyAction> enemyActions = new List<EnemyAction>();
     int currentAction = 0;
@@ -34,6 +36,7 @@ public class EnemyBase : MonoBehaviour
     {
         alreadyAction = false;
         currentAction = 0;
+        currentHP = BaseHP;
     }
 
     public void TurnProgression()
@@ -42,6 +45,18 @@ public class EnemyBase : MonoBehaviour
         alreadyAction = false;
     }
 
+    public void ObtainDamage(int damageVal)
+    {
+        currentHP -= damageVal;
+        if (currentHP <= 0)
+        {
+            anim.Play("Dead");
+        }
+        else
+        {
+            anim.Play("Damage");
+        }
+    }
     public List<EnemyAction> GetEnemyActions()
     {
         int actionCnt = 0;

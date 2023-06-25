@@ -19,4 +19,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: f8277f72626f9984a8708d27ba7dbeff, type: 3}
   cost: 2
   cardName: "\u30EF\u30F3\u30E2\u30A2!"
-  cardText: "\u5F3E\u306E\u767A\u5C04\u5834\u6240\u30921\u7B87\u6240\u8FFD\u52A0!"
+  cardText: "\u3053\u306E\u30BF\u30FC\u30F3\u5F3E\u306E\u767A\u5C04\u5834\u6240\u30921\u7B87\u6240\u8FFD\u52A0!"

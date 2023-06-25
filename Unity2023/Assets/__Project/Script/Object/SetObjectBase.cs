@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class SetObjectBase : MonoBehaviour
 {
+    int ignoreFlame = 0;
+    private void Update()
+    {
+        ignoreFlame--;
+    }
     private void OnTriggerEnter(Collider other)
     {
-        TriggerEnterAction(other);
+        if (other != null && ignoreFlame <= 0)
+        {
+            TriggerEnterAction(other);
+            ignoreFlame = 2;
+        }
     }
 
     public virtual void TriggerEnterAction(Collider collider) { }

@@ -50,6 +50,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         AddPlayWaitSoundEffect(seDatas.wallHit);
     }
 
+    public void PlayOneMoreSound()
+    {
+        audioSource.PlayOneShot(seDatas.oneMore);
+    }
     void AddPlayWaitSoundEffect(AudioClip audioClip)
     {
         int maxWaitSoundEffectCount = 15;

@@ -15,4 +15,5 @@ public class SEDatas : ScriptableObject
     public AudioClip mapOpen;
     public AudioClip nailHit;
     public AudioClip wallHit;
+    public AudioClip oneMore;
 }

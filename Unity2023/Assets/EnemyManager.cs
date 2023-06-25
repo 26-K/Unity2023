@@ -17,7 +17,19 @@ public class EnemyManager : MonoBehaviour
             a.Init();
         }
     }
+    public void AddDamage(int damageVal)
+    {
+        var a = GetRandom(enemys);
+        if (a != null)
+        {
+            a.ObtainDamage(damageVal);
+        }
+    }
 
+    T GetRandom<T>(List<T> Params)
+    {
+        return Params[Random.Range(0, Params.Count)];
+    }
     public void Update()
     {
         if (TurnManager.Ins.GetCurrentTurn == TurnState.EnemyTurn)
