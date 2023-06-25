@@ -27,7 +27,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         if (playWaitList.Count >= 1 && waitFlame <= 0) //一度に同時になる可能性のある効果音はタイミングをずらして鳴らす
         {
             waitFlame = 2;
-            audioSource.pitch = Random.Range(0.9f,1.1f);
+            audioSource.pitch = Random.Range(0.95f,1.05f);
             audioSource.PlayOneShot(playWaitList[0]);
             playWaitList.RemoveAt(0);
         }
@@ -68,20 +68,28 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     }
     public void PlayBattleStartSound()
     {
-        audioSource.PlayOneShot(seDatas.battleStart);
+        AddPlayWaitIgnorePitchSoundEffect(seDatas.battleStart);
     }
     public void PlayTurnStartSound()
     {
         audioSource.pitch = 1.0f;
-        audioSource.PlayOneShot(seDatas.turnStart);
+        AddPlayWaitIgnorePitchSoundEffect(seDatas.turnStart);
     }
     public void PlayGateInSound()
     {
         AddPlayWaitSoundEffect(seDatas.gateIn);
     }
+    public void PlayDuplicateSound()
+    {
+        AddPlayWaitSoundEffect(seDatas.duplicate);
+    }
     public void PlaySetObjectSound()
     {
         AddPlayWaitSoundEffect(seDatas.setObject);
+    }
+    public void PlayFireImpactSound()
+    {
+        AddPlayWaitSoundEffect(seDatas.fireImpact);
     }
     void AddPlayWaitSoundEffect(AudioClip audioClip)
     {

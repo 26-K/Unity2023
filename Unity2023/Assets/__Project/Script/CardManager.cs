@@ -198,6 +198,14 @@ public class CardManager : MonoBehaviour
         {
             a.Refresh();
         }
+        foreach (var a in discardPile)
+        {
+            a.Refresh();
+        }
+        foreach (var a in deck)
+        {
+            a.Refresh();
+        }
     }
 
     public void GenerateRandomCardAddHand()

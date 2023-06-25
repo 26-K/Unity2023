@@ -81,6 +81,18 @@ public class FieldManager : MonoBehaviour
         launchArrows.Clear();
     }
 
+    public void AddLaunch(Vector3 pos)
+    {
+        Vector3 launchPos = pos + Vector3.up * 2;
+        launchPos.z = 0;
+        var b = Instantiate(pfBullet, baseField.transform);
+        b.Launch();
+        b.transform.position = launchPos;
+        b.transform.localPosition = new Vector3(b.transform.localPosition.x, b.transform.localPosition.y, -1);
+        b.AddRigid(Vector3.down + (Random.Range(1, 2) == 1 ? (Vector3.left) : Vector3.right));
+        bulletBases.Add(b);
+    }
+
     public void ResetField()
     {
         foreach (var a in setObjects)

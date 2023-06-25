@@ -7,23 +7,25 @@ public class Object_AttackGate : SetObjectBase
     public override void TriggerEnterAction(Collider collider)
     {
         var a = collider.GetComponent<BulletBase>();
+        int addVal = 0;
         if (a != null)
         {
-            InGameManager.Ins.GetEnemyManager().AddDamage(a.CalcPow());
+            addVal = a.CalcPow();
+            InGameManager.Ins.GetEnemyManager().AddDamage(addVal);
         }
         AudioManager.Ins.PlayGateInSound();
         var randval = Random.Range(0, 3);
         if (randval == 0)
         {
-            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collider.transform, "ナイス!");
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collider.transform, $"ナイス!\n+{addVal}");
         }
         else if (randval == 1)
         {
-            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collider.transform, "OK!");
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collider.transform, $"OK!\n+{addVal}");
         }
         else
         {
-            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collider.transform, "Good!");
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collider.transform, $"Good!\n+{addVal}");
         }
     }
 }

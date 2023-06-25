@@ -29,6 +29,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     [SerializeField] GameObject sizeObj;
     [SerializeField] GameObject contentObj;
     [SerializeField] UI_MassData uI_MassData;
+    [SerializeField] Transform basePos;
     [SerializeField] List<UI_MassData> uI_MassDatas;
     public MapSelectButton ui_RestButton;
     public MapSelectButton ui_BattleButton;
@@ -90,10 +91,12 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
         }
 
         int index = 1;
+        Vector3 basePoses = basePos.position;
         foreach (var a in mapData.massData)
         {
             var b = Instantiate(uI_MassData, contentObj.transform);
-            b.transform.position = (Vector2.up * index) * 120 - (Vector2.up * 600) + Vector2.right * 100;
+            var c = new Vector2(basePoses.x, index * 120 + basePoses.y);
+            b.transform.position = c;
             b.Init(a, index);
             index++;
             uI_MassDatas.Add(b);

@@ -8,7 +8,10 @@ public class SetObjectBase : MonoBehaviour
     private void Update()
     {
         ignoreFlame--;
+        SelfUpdate();
     }
+
+    public virtual void SelfUpdate() { }
     private void OnTriggerEnter(Collider other)
     {
         if (other != null && ignoreFlame <= 0)

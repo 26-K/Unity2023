@@ -82,7 +82,7 @@ MonoBehaviour:
   enemyActions:
   - actionType: 2
     actionPow: 1
-    quote: "\u30AD\u30FC\uFF01\u30AD\u30FC\uFF01"
+    quote: "\u69D8\u5B50\u3092\u4F3A\u3063\u3066\u3044\u308B"
   - actionType: 3
     actionPow: 1
     quote: 

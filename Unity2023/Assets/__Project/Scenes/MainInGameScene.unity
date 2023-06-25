@@ -2020,12 +2020,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 169181031}
+  - {fileID: 580304337}
   m_Father: {fileID: 1424223951}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 2217.0066}
+  m_AnchoredPosition: {x: 0, y: 2217.0024}
   m_SizeDelta: {x: 0, y: 3000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &199291299
@@ -5689,7 +5690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &563519932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5832,6 +5833,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567390629}
   m_CullTransparentMesh: 1
+--- !u!1 &580304336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 580304337}
+  m_Layer: 5
+  m_Name: BasePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &580304337
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580304336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 199291298}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -1294}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &583234299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6087,6 +6124,7 @@ MonoBehaviour:
   sizeObj: {fileID: 277066740}
   contentObj: {fileID: 199291297}
   uI_MassData: {fileID: 7179794886296753457, guid: 17fbec1611c1c1648a297607fc3a9068, type: 3}
+  basePos: {fileID: 580304337}
   uI_MassDatas: []
   ui_RestButton: {fileID: 2281942446920994998, guid: 6fa281e3d7aa38742ad07eb387f8b9b4, type: 3}
   ui_BattleButton: {fileID: 4796174105395584959, guid: 391211b7108921447bc20e88db3b9392, type: 3}
@@ -19485,8 +19523,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1776121953}
   m_HandleRect: {fileID: 1776121952}
   m_Direction: 2
-  m_Value: -0.0000029732958
-  m_Size: 0.26099455
+  m_Value: -0.0000011012207
+  m_Size: 0.261
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
