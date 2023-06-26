@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b084221f0d63f7e46bded9c4481fbf4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHP: 50
+  BaseHP: 45
   anim: {fileID: 5129658333567598396}
   enemyActions:
   - actionType: 2
@@ -87,19 +87,19 @@ MonoBehaviour:
     actionPow: 1
     quote: 
   - actionType: 0
-    actionPow: 3
+    actionPow: 4
     quote: "\u30B9\u30E9\u30A4\u30E0\u30A2\u30BF\u30C3\u30AF\uFF01"
   - actionType: 3
     actionPow: 1
     quote: 
   - actionType: 0
-    actionPow: 4
+    actionPow: 5
     quote: 
   - actionType: 3
     actionPow: 1
     quote: 
   - actionType: 0
-    actionPow: 5
+    actionPow: 6
     quote: 
   - actionType: 3
     actionPow: 1
@@ -111,12 +111,6 @@ MonoBehaviour:
     actionPow: 1
     quote: 
   - actionType: 0
-    actionPow: 6
-    quote: 
-  - actionType: 3
-    actionPow: 1
-    quote: 
-  - actionType: 0
     actionPow: 7
     quote: 
   - actionType: 3
@@ -124,6 +118,12 @@ MonoBehaviour:
     quote: 
   - actionType: 0
     actionPow: 8
+    quote: 
+  - actionType: 3
+    actionPow: 1
+    quote: 
+  - actionType: 0
+    actionPow: 10
     quote: 
   - actionType: 3
     actionPow: 1

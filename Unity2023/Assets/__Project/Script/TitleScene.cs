@@ -39,6 +39,7 @@ public class TitleScene : SingletonMonoBehaviour<TitleScene>
     }
     public void PushStartButton()
     {
+        AudioManager.Ins.PlayGameStartSound();
         isPlayBGM = false;
         Camera.main.DOShakePosition(0.5f, 10.0f, 30, 30, true);
         //Camera.main.DOShakeRotation(0.3f, 4.0f, 30, 30, true);

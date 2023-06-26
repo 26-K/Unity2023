@@ -86,6 +86,7 @@ public class PlayerInfoManager : MonoBehaviour
         {
             player.PlayDie();
             InGameManager.Ins.GetGameOverUI().ShowGameOverUI();
+            InGameManager.Ins.isEndGame = true;
         }
     }
 

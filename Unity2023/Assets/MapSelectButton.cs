@@ -24,7 +24,7 @@ public class MapSelectButton : MonoBehaviour
         }
         else if (mapMassType == MapMassType.Event)
         {
-            if(Random.Range(0,1) == 1) //todo イベント
+            if(Random.Range(0,2) == 1) //todo イベント
             {
                 MapManager.Ins.PushRestButton();
             }
@@ -33,6 +33,12 @@ public class MapSelectButton : MonoBehaviour
                 MapManager.Ins.PushBattleButton();
             }
         }
+        else if (mapMassType == MapMassType.Boss)
+        {
+                MapManager.Ins.PushBossButton();
+
+        }
+        MapManager.Ins.SetMapPos(this.transform.position);
     }
 
     public void Refresh(bool enable)

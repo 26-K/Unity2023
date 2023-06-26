@@ -72,6 +72,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         audioSource.pitch = 1.0f;
         AddPlayWaitIgnorePitchSoundEffect(seDatas.turnStart);
     }
+    public void PlayGameStartSound()
+    {
+        audioSource.PlayOneShot(seDatas.gameStart);
+    }
     public void PlayGateInSound()
     {
         AddPlayWaitSoundEffect(seDatas.gateIn);

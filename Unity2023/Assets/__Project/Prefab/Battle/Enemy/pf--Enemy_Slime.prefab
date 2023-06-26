@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b084221f0d63f7e46bded9c4481fbf4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHP: 50
+  BaseHP: 55
   anim: {fileID: 8973220343869234425}
   enemyActions:
   - actionType: 2

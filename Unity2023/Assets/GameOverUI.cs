@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -23,5 +24,10 @@ public class GameOverUI : MonoBehaviour
              score.Init();
              titleButton.SetActive(true);
         });
+    }
+
+    public void PushTitleButton()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 }

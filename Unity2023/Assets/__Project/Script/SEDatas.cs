@@ -23,4 +23,5 @@ public class SEDatas : ScriptableObject
     public AudioClip setObject;
     public AudioClip cardSelect;
     public AudioClip fireImpact;
+    public AudioClip gameStart;
 }

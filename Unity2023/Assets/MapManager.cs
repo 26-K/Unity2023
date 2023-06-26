@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum MapMassType
 {
@@ -27,10 +28,11 @@ public class MapData
 public class MapManager : SingletonMonoBehaviour<MapManager>
 {
     [SerializeField] GameObject sizeObj;
-    [SerializeField] GameObject contentObj;
+    [SerializeField] RectTransform contentObj;
     [SerializeField] UI_MassData uI_MassData;
     [SerializeField] Transform basePos;
     [SerializeField] List<UI_MassData> uI_MassDatas;
+    [SerializeField] ScrollRect rect;
     public MapSelectButton ui_RestButton;
     public MapSelectButton ui_BattleButton;
     public MapSelectButton ui_EventButton;
@@ -116,6 +118,29 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
 
     public void PushBattleButton()
     {
+        if (isMapMoveMode == false)
+        {
+            return;
+        }
+        isMapMoveMode = false;
+        UI_SceneChangeAnim.Ins.PlayAnim();
+        DOVirtual.DelayedCall(0.4f, () =>
+        {
+            sizeObj.SetActive(false);
+        }).OnComplete(() =>
+        {
+            InGameManager.Ins.BattleStart();
+        }
+        );
+
+        UI_Tutorial.Ins.EndMapTutorial();
+    }
+    public void PushBossButton()
+    {
+        if (isMapMoveMode == false)
+        {
+            return;
+        }
         isMapMoveMode = false;
         UI_SceneChangeAnim.Ins.PlayAnim();
         DOVirtual.DelayedCall(0.4f, () =>
@@ -131,6 +156,10 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     }
     public void PushRestButton()
     {
+        if (isMapMoveMode == false)
+        {
+            return;
+        }
         isMapMoveMode = false;
         UI_SceneChangeAnim.Ins.PlayAnim();
         DOVirtual.DelayedCall(0.4f, () =>
@@ -143,6 +172,14 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
             InGameManager.Ins.NextFloor();
         }
         );
+    }
+
+    public void SetMapPos(Vector3 pos)
+    {
+        var targetrect = rect.GetComponent<RectTransform>();
+        pos.y = contentObj.rect.height - pos.y - 650;
+        pos.x = 0;
+        contentObj.anchoredPosition = pos;
     }
 
     public MapMassType GetRandomMassType()
