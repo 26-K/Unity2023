@@ -940,7 +940,7 @@ MonoBehaviour:
     actionPow: 1
     quote: 
   - actionType: 0
-    actionPow: 18
+    actionPow: 14
     quote: 
   - actionType: 1
     actionPow: 5
@@ -964,13 +964,13 @@ MonoBehaviour:
     actionPow: 1
     quote: 
   - actionType: 0
-    actionPow: 25
+    actionPow: 20
     quote: 
   - actionType: 3
     actionPow: 1
     quote: 
   - actionType: 0
-    actionPow: 25
+    actionPow: 20
     quote: 
   - actionType: 3
     actionPow: 1

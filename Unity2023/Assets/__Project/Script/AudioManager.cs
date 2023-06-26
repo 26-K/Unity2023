@@ -19,7 +19,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     // Update is called once per frame
     void Update()
     {
-        audioSource.volume = GlobalSettingManager.bgmRate;
+        audioSource.volume = GlobalSettingManager.seRate;
         waitFlame--;
         if (playWaitList.Count >= 1 && waitFlame <= 0) //一度に同時になる可能性のある効果音はタイミングをずらして鳴らす
         {

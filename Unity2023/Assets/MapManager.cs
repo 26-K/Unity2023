@@ -43,7 +43,6 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     {
         mapData.massData.Clear();
         //最初の戦闘
-        for (int s = 0; s < cellSize; s++)
         {
             MapMassData data = new MapMassData();
             data.massType.Add(MapMassType.None);
@@ -87,7 +86,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
             data.massType.Add(MapMassType.None);
             data.massType.Add(MapMassType.Boss);
             data.massType.Add(MapMassType.None);
-            data.floor = 12;
+            data.floor = 13;
             mapData.massData.Add(data);
         }
 

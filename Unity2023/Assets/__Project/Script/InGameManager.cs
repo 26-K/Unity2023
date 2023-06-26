@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InGameManager : SingletonMonoBehaviour<InGameManager>
 {
+    public bool isEndGame = false;
     [SerializeField] Player pl;
     [SerializeField] UI_Status statusUI;
     [SerializeField] DataBaseSO dataBaseSO;

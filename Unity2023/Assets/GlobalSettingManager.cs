@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GlobalSettingManager : SingletonMonoBehaviour<GlobalSettingManager>
 {
-    public static float seRate = 0.7f;
-    public static float bgmRate = 0.7f;
+    public static float seRate = 0.71f;
+    public static float bgmRate = 0.71f;
     public static bool ignoreTutorial = false;
     protected override void UnityAwake()
     {

@@ -14,6 +14,7 @@ public class TitleScene : SingletonMonoBehaviour<TitleScene>
     [SerializeField] Animator anim;
     [SerializeField] Animator fadeInAnim;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource seSource;
 
     [SerializeField] GameObject optionObj;
     [SerializeField] Slider bgmSlider;
@@ -74,6 +75,10 @@ public class TitleScene : SingletonMonoBehaviour<TitleScene>
         GlobalSettingManager.Ins.ChangeSEVolume(seSlider.value);
         bgmText.text = $"{(int)(bgmSlider.value * 100)}";
         seText.text = $"{(int)(seSlider.value * 100)}";
+    }
+    public void PlaySE()
+    {
+        seSource.Play();
     }
 
     protected override void UnityAwake()

@@ -18,5 +18,9 @@ public class BGMManager : MonoBehaviour
         {
             audios.volume = GlobalSettingManager.Ins.GetBGMVolume();
         }
+        if (InGameManager.Ins != null && InGameManager.Ins.isEndGame == false)
+        {
+            audios.volume = GlobalSettingManager.Ins.GetBGMVolume();
+        }
     }
 }

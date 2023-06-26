@@ -22,6 +22,6 @@ MonoBehaviour:
   duplicate: {fileID: 8300000, guid: 642c255f1880b704198200e8ca9a63ca, type: 3}
   battleStart: {fileID: 8300000, guid: 6edcf9c7738dcfc4abf77a04405634ac, type: 3}
   turnStart: {fileID: 8300000, guid: 6edcf9c7738dcfc4abf77a04405634ac, type: 3}
-  setObject: {fileID: 8300000, guid: 7b03bdb8e8e29414289a3eac6e399c15, type: 3}
+  setObject: {fileID: 8300000, guid: ed1d7b48f69711f45b3d673f9c6810e9, type: 3}
   cardSelect: {fileID: 8300000, guid: 1525a5bcd561eea4090c83320180c50f, type: 3}
   fireImpact: {fileID: 8300000, guid: 47796a84d51db3a49a4d3dab901636a0, type: 3}
