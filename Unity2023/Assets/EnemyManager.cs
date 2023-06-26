@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] GameObject damageEffectFire;
     [SerializeField] UI_SpeechBubble speechBubble;
     [SerializeField] UI_StatusGauge statusGauge;
+    [SerializeField] EnemtAttackEntryUI enemyAttackEntryUI;
 
     float waitTimer = 0.0f;
 
@@ -41,6 +42,7 @@ public class EnemyManager : MonoBehaviour
         foreach (var a in enemys)
         {
             a.Init();
+            enemyAttackEntryUI.Init(a.GetEnemyActions());
         }
         Refresh();
     }
@@ -95,6 +97,7 @@ public class EnemyManager : MonoBehaviour
         foreach (var a in enemys)
         {
             a.TurnProgression();
+            enemyAttackEntryUI.Init(a.GetEnemyActions());
         }
     }
 

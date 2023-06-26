@@ -31,11 +31,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e9cb0caa03337224c9029edac76c86fb, type: 2}
   - {fileID: 11400000, guid: 70e12a475f8f30c4bbd0ac8c82d38acd, type: 2}
   - {fileID: 11400000, guid: 96e6014e061373d4294747a7c7eb83d0, type: 2}
+  - {fileID: 11400000, guid: 56f142299d934d24fb5f91782dfec654, type: 2}
   firstCards:
   - {fileID: 11400000, guid: 9828869f8de1c474f87541a8fadf92c0, type: 2}
   - {fileID: 11400000, guid: d52d8e4d57d3113499ea99e431ce8db8, type: 2}
   - {fileID: 11400000, guid: d52d8e4d57d3113499ea99e431ce8db8, type: 2}
-  - {fileID: 11400000, guid: 402aaa027a941b049979a88e051e9f6e, type: 2}
   - {fileID: 11400000, guid: f7b7edf3b7d627d4aa4a5742ded4bb30, type: 2}
-  - {fileID: 11400000, guid: 1bf36a51628f18940886cf7ee4cdcfae, type: 2}
+  - {fileID: 11400000, guid: 56f142299d934d24fb5f91782dfec654, type: 2}
+  - {fileID: 11400000, guid: 56f142299d934d24fb5f91782dfec654, type: 2}
   - {fileID: 11400000, guid: 6b3c8805d55dc164694cfb678f4dff60, type: 2}
+  - {fileID: 11400000, guid: 402aaa027a941b049979a88e051e9f6e, type: 2}
+  attackIconImage: {fileID: 21300000, guid: 169d45648e00348038299fc345aa6b4f, type: 3}
+  guardIconImage: {fileID: 21300000, guid: 6fd5fecc5e31d4e0f884c297f1879e05, type: 3}
+  questionIconImage: {fileID: 21300000, guid: 515c6c47b85414bc68c47db3da4e7e07, type: 3}

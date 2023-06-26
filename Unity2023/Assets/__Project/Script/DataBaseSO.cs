@@ -11,6 +11,9 @@ public class DataBaseSO : ScriptableObject
     public List<Sprite> rarityImages;
     public List<CardEffectBase> cards;
     [LabelText("初期デッキ")]public List<CardEffectBase> firstCards = new List<CardEffectBase>();
+    [SerializeField] Sprite attackIconImage;
+    [SerializeField] Sprite guardIconImage;
+    [SerializeField] Sprite questionIconImage;
     public Sprite GetCardBackImage(int rarity)
     {
         if (rarity > rarityImages.Count)
@@ -44,6 +47,22 @@ public class DataBaseSO : ScriptableObject
     T GetRandom<T>(List<T> Params)
     {
         return Params[Random.Range(0, Params.Count)];
+    }
+
+    public Sprite GetAttackIconSprite()
+    {
+        return attackIconImage;
+
+    }
+    public Sprite GetGuardIconSprite()
+    {
+        return guardIconImage;
+
+    }
+    public Sprite GetQuestionIconSprite()
+    {
+        return questionIconImage;
+
     }
 }
 

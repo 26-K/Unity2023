@@ -61,6 +61,8 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
         TurnManager.Ins.BattleStart();
         enemyManager.BattleStart();
         fieldManager.ResetField();
+        UI_Tutorial.Ins.EndMapTutorial();
+        UI_Tutorial.Ins.ShowBattleTutorial();
     }
 
     private void Update()

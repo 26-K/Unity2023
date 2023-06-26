@@ -11,7 +11,12 @@ public class Object_AttackGate : SetObjectBase
         if (a != null)
         {
             addVal = a.CalcPow();
+            a.ResetCombo();
             InGameManager.Ins.GetEnemyManager().AddDamage(addVal);
+        }
+        else
+        {
+            return;
         }
         AudioManager.Ins.PlayGateInSound();
         var randval = Random.Range(0, 3);

@@ -2,17 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalSettingManager : MonoBehaviour
+public class GlobalSettingManager : SingletonMonoBehaviour<GlobalSettingManager>
 {
+    public static float seRate = 0.7f;
+    public static float bgmRate = 0.7f;
+    public static bool ignoreTutorial = false;
+    protected override void UnityAwake()
+    {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        DontDestroyOnLoad(this);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeBGMVolume(float rate)
     {
-        
+        bgmRate = rate;
+    }
+
+    public void ChangeSEVolume(float rate)
+    {
+        seRate = rate;
+    }
+
+    public float GetBGMVolume()
+    {
+        return bgmRate;
+    }
+    public float GetSEVolume()
+    {
+        return seRate;
     }
 }

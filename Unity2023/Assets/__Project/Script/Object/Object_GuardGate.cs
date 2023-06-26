@@ -13,6 +13,10 @@ public class Object_GuardGate : SetObjectBase
             addVal = a.CalcPow();
             InGameManager.Ins.GetPlayerInfoManager().AddShield(addVal);
         }
+        else
+        {
+            return;
+        }
         AudioManager.Ins.PlayGateInSound();
         var randval = Random.Range(0, 3);
         if (randval == 0)

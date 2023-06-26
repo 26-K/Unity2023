@@ -61,17 +61,26 @@ public class PlayerInfoManager : MonoBehaviour
         if (totalDamage > guard) //防ぎきれない
         {
             totalDamage -= guard;
+            if (guard > 0)
+            {
+                InGameManager.Ins.GetUI_PopUpManager().ShowPopUpTextSub(player.transform, $"\nブロック！[{guard}]", "DamagePopUp");
+            }
             guard = 0;
             player.PlayDamage();
         }
         else //ガード
         {
+            AudioManager.Ins.PlayNailHitSound();
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpTextSub(player.transform, $"\nブロック！[{totalDamage}]", "DamagePopUp");
             totalDamage = 0;
             guard -= totalDamage;
         }
         hp -= totalDamage;
         SetDiffDamage(-totalDamage);
-        InGameManager.Ins.GetUI_PopUpManager().ShowPopUpTextSub(player.transform, $"{totalDamage}", "DamagePopUp");
+        if (totalDamage != 0)
+        {
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpTextSub(player.transform, $"{totalDamage}", "DamagePopUp");
+        }
         hpGauge.Refresh(hp, maxHp, guard);
         if (hp <= 0)
         {

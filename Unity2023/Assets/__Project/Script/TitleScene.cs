@@ -1,10 +1,12 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class TitleScene : MonoBehaviour
+public class TitleScene : SingletonMonoBehaviour<TitleScene>
 {
     [SerializeField] GameObject title;
     [SerializeField] GameObject startButton;
@@ -12,13 +14,19 @@ public class TitleScene : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] Animator fadeInAnim;
     [SerializeField] AudioSource audioSource;
+
+    [SerializeField] GameObject optionObj;
+    [SerializeField] Slider bgmSlider;
+    [SerializeField] Slider seSlider;
+    [SerializeField] TextMeshProUGUI bgmText;
+    [SerializeField] TextMeshProUGUI seText;
     // Start is called before the first frame update
-    bool isPlayBGM = true;
+    public bool isPlayBGM = true;
     void Start()
     {
         Application.targetFrameRate = 60;
-        DOVirtual.DelayedCall(1.0f, ()=> title.SetActive(true));
-        DOVirtual.DelayedCall(1.5f, ()=> startButton.SetActive(true));
+        DOVirtual.DelayedCall(1.0f, () => title.SetActive(true));
+        DOVirtual.DelayedCall(1.5f, () => startButton.SetActive(true));
     }
 
     private void Update()
@@ -44,5 +52,31 @@ public class TitleScene : MonoBehaviour
             SceneManager.LoadScene("MainInGameScene");
         });
         anim.Play("GameStart");
+    }
+
+    public void OpenOption()
+    {
+        optionObj.SetActive(true);
+        bgmSlider.value = GlobalSettingManager.bgmRate;
+        seSlider.value = GlobalSettingManager.seRate;
+        bgmText.text = $"{(int)(bgmSlider.value * 100)}";
+        seText.text = $"{(int)(seSlider.value * 100)}";
+    }
+
+    public void ChangeBGM(float val)
+    {
+        GlobalSettingManager.Ins.ChangeBGMVolume(bgmSlider.value);
+        bgmText.text = $"{(int)(bgmSlider.value * 100)}";
+        seText.text = $"{(int)(seSlider.value * 100)}";
+    }
+    public void ChangeSE(float val)
+    {
+        GlobalSettingManager.Ins.ChangeSEVolume(seSlider.value);
+        bgmText.text = $"{(int)(bgmSlider.value * 100)}";
+        seText.text = $"{(int)(seSlider.value * 100)}";
+    }
+
+    protected override void UnityAwake()
+    {
     }
 }

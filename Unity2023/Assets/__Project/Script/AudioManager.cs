@@ -15,14 +15,11 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()
     {
+        audioSource.volume = GlobalSettingManager.bgmRate;
         waitFlame--;
         if (playWaitList.Count >= 1 && waitFlame <= 0) //一度に同時になる可能性のある効果音はタイミングをずらして鳴らす
         {

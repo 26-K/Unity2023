@@ -63,15 +63,15 @@ public class BattleRewardManager : MonoBehaviour
 
     /// <summary>
     /// カードのレアリティ毎の出現率を計算する
-    /// ノーマル :55%
-    /// レア :33%
-    /// 凄いレア : 12%
+    /// ノーマル :62%
+    /// レア :30%
+    /// 凄いレア : 3%
     /// </summary>
     /// <returns></returns>
     public Rarity LotteryRarity()
     {
         int randVal = Random.Range(0, 100);
-        randVal -= 55;//ノーマル
+        randVal -= 65;//ノーマル
         if (randVal <= 0)
         {
             return Rarity.Normal;

@@ -79,6 +79,10 @@ public class FieldManager : MonoBehaviour
             Destroy(a.gameObject);
         }
         launchArrows.Clear();
+        foreach (var a in setObjects)
+        {
+            a.SelfStart();
+        }
     }
 
     public void AddLaunch(Vector3 pos)

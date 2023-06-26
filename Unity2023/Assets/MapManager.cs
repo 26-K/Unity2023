@@ -34,9 +34,10 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     public MapSelectButton ui_RestButton;
     public MapSelectButton ui_BattleButton;
     public MapSelectButton ui_EventButton;
+    public MapSelectButton ui_BossButton;
     public MapData mapData = new MapData();
     bool isMapMoveMode = false;
-    int stageCount = 16;
+    int stageCount = 11;
     int cellSize = 3;
     public void GenerateMap()
     {
@@ -83,10 +84,10 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
         for (int s = 0; s < 1; s++)
         {
             MapMassData data = new MapMassData();
+            data.massType.Add(MapMassType.None);
             data.massType.Add(MapMassType.Boss);
-            data.massType.Add(MapMassType.Boss);
-            data.massType.Add(MapMassType.Boss);
-            data.floor = 23;
+            data.massType.Add(MapMassType.None);
+            data.floor = 12;
             mapData.massData.Add(data);
         }
 
@@ -126,6 +127,8 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
             InGameManager.Ins.BattleStart();
         }
         );
+
+        UI_Tutorial.Ins.EndMapTutorial();
     }
     public void PushRestButton()
     {

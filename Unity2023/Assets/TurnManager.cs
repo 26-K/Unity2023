@@ -24,11 +24,13 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
         elapsedTurn = 0;
         CurrentTurnManagerUI.Ins.ShowBattleStartAnim();
         InGameManager.Ins.GetCardManager().BattleStart();
-        DOVirtual.DelayedCall(1.5f, () =>
-        {
-            StartPlayerTurn();
-        }
-        );
+
+        elapsedTurn++;
+        currentTurn = TurnState.PlayerTurn;
+        InGameManager.Ins.GetCardManager().TurnStart();
+        InGameManager.Ins.GetFieldManager().LaunchReady();
+        InGameManager.Ins.GetEnemyManager().TurnProgression();
+        InGameManager.Ins.GetPlayerInfoManager().TurnProgression();
     }
 
     /// <summary>
@@ -37,6 +39,7 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
     public void PushTurnEndButton()
     {
         PlayerTurnEnd();
+        UI_Tutorial.Ins.EndBattleTutorial();
     }
 
     public void PlayerTurnEnd()

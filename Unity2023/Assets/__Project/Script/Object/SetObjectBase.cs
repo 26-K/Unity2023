@@ -11,6 +11,11 @@ public class SetObjectBase : MonoBehaviour
         SelfUpdate();
     }
 
+    public virtual void SelfStart()
+    {
+
+    }
+
     public virtual void SelfUpdate() { }
     private void OnTriggerEnter(Collider other)
     {

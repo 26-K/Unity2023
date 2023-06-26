@@ -48,6 +48,17 @@ public class UI_MassData : MonoBehaviour
                 b.Init(a);
                 mapButtons.Add(b);
             }
+            else if (a == MapMassType.Boss)
+            {
+                var b = Instantiate(MapManager.Ins.ui_BossButton, this.transform);
+                b.transform.localPosition = Vector3.zero;
+                Vector2 pos = Vector2.zero;
+                pos.x = 200 * now - 200;
+                pos.y = Random.Range(-10, 10);
+                b.transform.localPosition = pos;
+                b.Init(a);
+                mapButtons.Add(b);
+            }
             now++;
         }
     }

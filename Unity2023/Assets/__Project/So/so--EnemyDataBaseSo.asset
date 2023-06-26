@@ -16,12 +16,15 @@ MonoBehaviour:
   - minFloor: 0
     maxFloor: 5
     enemy: {fileID: 1302736074445084821, guid: e91459e55906fd24bbbc4dfe8e2c38a6, type: 3}
-  - minFloor: 3
-    maxFloor: 6
+  - minFloor: 6
+    maxFloor: 11
     enemy: {fileID: 8233281643172404352, guid: edf9f7793a393e744b634222343ae11b, type: 3}
   - minFloor: 1
-    maxFloor: 8
+    maxFloor: 11
     enemy: {fileID: 8233281643172404352, guid: 2b33927502a7f8f4fb44cf408e7b8add, type: 3}
   - minFloor: 2
-    maxFloor: 9
+    maxFloor: 11
     enemy: {fileID: 8233281643172404352, guid: 4a8c5d86564b11249b58ca3d432428ce, type: 3}
+  - minFloor: 12
+    maxFloor: 12
+    enemy: {fileID: -8640835722367193100, guid: 193a1ac0675e9104a92c2ab03e3714bd, type: 3}

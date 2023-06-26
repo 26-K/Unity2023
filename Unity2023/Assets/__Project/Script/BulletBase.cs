@@ -13,11 +13,13 @@ public class BulletBase : MonoBehaviour
     public int pow = 1;
     int ignoreFlame = 7;
     int hitcount = 0;
+    int totalHitcount = 0;
     public virtual void Launch(CharacterBase character)
     {
         ignoreFlame = 7;
         sleepTime = 0.0f;
         hitcount = 0;
+        totalHitcount = 0;
     }
     public void Launch(int pow = 5)
     {
@@ -51,6 +53,11 @@ public class BulletBase : MonoBehaviour
         
     }
 
+    public void ResetCombo()
+    {
+        hitcount = 0;
+    }
+
     public void AddRigid(Vector3 vec)
     {
         rgd.velocity = vec * 50;
@@ -73,6 +80,7 @@ public class BulletBase : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         hitcount++;
+        totalHitcount++;
         if (hitcount % 5 == 0)
         {
             InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collision.transform, $"Combo{hitcount}\nPow+{hitcount}");

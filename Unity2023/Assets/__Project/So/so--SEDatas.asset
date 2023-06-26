@@ -19,6 +19,7 @@ MonoBehaviour:
   wallHit: {fileID: 8300000, guid: f929267cf7bc3ef4db2240c7ca15d84c, type: 3}
   oneMore: {fileID: 8300000, guid: 45f0e6730a529df4c8e32731289dd17e, type: 3}
   gateIn: {fileID: 8300000, guid: f734184f594c8b64abac1bf81b6c5d33, type: 3}
+  duplicate: {fileID: 8300000, guid: 642c255f1880b704198200e8ca9a63ca, type: 3}
   battleStart: {fileID: 8300000, guid: 6edcf9c7738dcfc4abf77a04405634ac, type: 3}
   turnStart: {fileID: 8300000, guid: 6edcf9c7738dcfc4abf77a04405634ac, type: 3}
   setObject: {fileID: 8300000, guid: 7b03bdb8e8e29414289a3eac6e399c15, type: 3}

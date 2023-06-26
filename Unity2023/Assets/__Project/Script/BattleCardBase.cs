@@ -170,6 +170,7 @@ public class BattleCardBase : MonoBehaviour
             bt.id = this.cardEffect.id;
             bt.level = 0;
             InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Add(bt);
+            AudioManager.Ins.PlayDuplicateSound();
             InGameManager.Ins.NextFloor();
         }
     }
@@ -209,6 +210,7 @@ public class BattleCardBase : MonoBehaviour
             Debug.Log("Use");
             isUse = true;
             cardEffect.DoUse();
+            UI_Tutorial.Ins.EndBattleTutorial();
         }
         else
         {
