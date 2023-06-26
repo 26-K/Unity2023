@@ -18,7 +18,7 @@ public class ScoreUI : MonoBehaviour
         text.text += $"\nフロア進行 -----";
         scoreText.text += $"\n{add}";
 
-        add = InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Count * 20;
+        add = InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Count * 15;
         totalScore += add;
         text.text += $"\nカード所持数 -----";
         scoreText.text += $"\n{add}";
@@ -28,7 +28,7 @@ public class ScoreUI : MonoBehaviour
         text.text += $"\n最大コンボ -----";
         scoreText.text += $"\n{add}";
 
-        add = InGameManager.Ins.GetPlayerInfoManager().GetDiffDamage * 8;
+        add = (int)(InGameManager.Ins.GetPlayerInfoManager().GetDiffDamage * 0.4f);
         totalScore += add;
         text.text += $"\n与被ダメージ差分 -----";
         scoreText.text += $"\n{add}";
@@ -38,5 +38,7 @@ public class ScoreUI : MonoBehaviour
 
         text.text += $"\nTotal";
         scoreText.text += $"\n{totalScore}";
+
+        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(totalScore);
     }
 }
