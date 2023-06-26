@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BGMManager : MonoBehaviour
+public class BGMManager : SingletonMonoBehaviour<BGMManager>
 {
     [SerializeField] AudioSource audios;
+    [SerializeField] AudioClip boss;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +23,19 @@ public class BGMManager : MonoBehaviour
         {
             audios.volume = audios.volume - 0.01f;
         }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            InGameManager.Ins.GetEnemyManager().AddDamage(999);
+        }
+    }
+
+    public void PlayFinalBossBGM()
+    {
+        audios.clip = boss;
+        audios.Play();
+    }
+
+    protected override void UnityAwake()
+    {
     }
 }

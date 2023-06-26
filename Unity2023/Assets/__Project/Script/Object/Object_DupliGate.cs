@@ -10,6 +10,11 @@ public class Object_DupliGate : SetObjectBase
     {
         coolTimer += Time.deltaTime;
     }
+
+    public override void SelfStart()
+    {
+        coolTimer = 10.0f;
+    }
     public override void TriggerEnterAction(Collider collider)
     {
         if (coolTimer < 1.0f)

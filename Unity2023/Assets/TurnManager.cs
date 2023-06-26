@@ -63,7 +63,14 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
         {
             Debug.Log("Youwin");
             currentTurn = TurnState.PlayerTurn;
-            InGameManager.Ins.GetBattleRewardManager().ShowAndLotteryRewardCards();
+            if (InGameManager.Ins.GetPlayerInfoManager().floor >= 13)
+            {
+                InGameManager.Ins.GetGameOverUI().ShowGameClearUI();
+            }
+            else
+            {
+                InGameManager.Ins.GetBattleRewardManager().ShowAndLotteryRewardCards();
+            }
             return;
         }
         currentTurn = TurnState.EnemyTurn;

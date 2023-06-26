@@ -15,26 +15,32 @@ public class ScoreUI : MonoBehaviour
         int totalScore = 0;
         int add = InGameManager.Ins.GetPlayerInfoManager().floor * 30;
         totalScore += add;
-        text.text += $"\nフロア進行 -----";
+        text.text += $"\nフロア進行 ";
         scoreText.text += $"\n{add}";
+        if (InGameManager.Ins.GetPlayerInfoManager().floor >= 13)
+        {
+            totalScore += 300;
+            text.text += $"\nクリアおめでとう!";
+            scoreText.text += $"\n{add}";
+        }
 
         add = InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Count * 15;
         totalScore += add;
-        text.text += $"\nカード所持数 -----";
+        text.text += $"\nカード所持数 ";
         scoreText.text += $"\n{add}";
 
         add = InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo * 12;
         totalScore += add;
-        text.text += $"\n最大コンボ -----";
+        text.text += $"\n最大コンボ ";
         scoreText.text += $"\n{add}";
 
         add = (int)(InGameManager.Ins.GetPlayerInfoManager().GetDiffDamage * 0.4f);
         totalScore += add;
-        text.text += $"\n与被ダメージ差分 -----";
+        text.text += $"\n与被ダメージ差分 ";
         scoreText.text += $"\n{add}";
 
         text.text += $"\n---------------------";
-        scoreText.text += $"\n-------";
+        scoreText.text += $"\n---------------------";
 
         text.text += $"\nTotal";
         scoreText.text += $"\n{totalScore}";

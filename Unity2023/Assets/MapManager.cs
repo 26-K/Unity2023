@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 
 public enum MapMassType
@@ -27,6 +28,7 @@ public class MapData
 
 public class MapManager : SingletonMonoBehaviour<MapManager>
 {
+    [SerializeField] Light lastBossBattleRight;
     [SerializeField] GameObject sizeObj;
     [SerializeField] RectTransform contentObj;
     [SerializeField] UI_MassData uI_MassData;
@@ -151,7 +153,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
             InGameManager.Ins.BattleStart();
         }
         );
-
+        BGMManager.Ins.PlayFinalBossBGM();
         UI_Tutorial.Ins.EndMapTutorial();
     }
     public void PushRestButton()
@@ -177,7 +179,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     public void SetMapPos(Vector3 pos)
     {
         var targetrect = rect.GetComponent<RectTransform>();
-        pos.y = contentObj.rect.height - pos.y - 650;
+        pos.y = contentObj.rect.height - InGameManager.Ins.GetPlayerInfoManager().floor * 120 - 650;
         pos.x = 0;
         contentObj.anchoredPosition = pos;
     }
@@ -203,5 +205,72 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
 
     protected override void UnityAwake()
     {
+    }
+}
+
+/// <summary>
+/// ScrollRectの拡張機能を提供します
+/// </summary>
+public static class ScrollRectExtension
+{
+    /// <summary>
+    /// ScrollRectの上端にGameObjectをあわせる
+    /// </summary>
+    /// <param name="scrollRect"></param>
+    /// <param name="go"></param>
+    public static float ScrollToBeBottom(this ScrollRect scrollRect, GameObject go)
+    {
+        return ScrollToCore(scrollRect, go, 0f);
+    }
+
+    /// <summary>
+    /// ScrollRectの下端にGameObjectをあわせる
+    /// </summary>
+    /// <param name="scrollRect"></param>
+    /// <param name="go"></param>
+    public static float ScrollToBeTop(this ScrollRect scrollRect, GameObject go)
+    {
+        return ScrollToCore(scrollRect, go, 1f);
+    }
+
+    /// <summary>
+    /// ScrollRectの縦中央にGameObjectをあわせる
+    /// </summary>
+    /// <param name="scrollRect"></param>
+    /// <param name="go"></param>
+    public static float ScrollToCentering(this ScrollRect scrollRect, GameObject go)
+    {
+        return ScrollToCore(scrollRect, go, 0.5f);
+    }
+
+    /// <summary>
+    /// ScrollRectのスクロール位置をGameObjectにあわせる
+    /// </summary>
+    /// <param name="scrollRect"></param>
+    /// <param name="go"></param>
+    /// <param name="align">0:下、0.5:中央、1:上</param>
+    /// <returns></returns>
+    static private float ScrollToCore(ScrollRect scrollRect, GameObject go, float align)
+    {
+        var targetRect = go.transform.GetComponent<RectTransform>();
+        var contentHeight = scrollRect.content.rect.height;
+        var viewportHeight = scrollRect.viewport.rect.height;
+        // スクロール不要
+        if (contentHeight < viewportHeight) return 0f;
+
+        // ローカル座標が contentHeight の上辺を0として負の値で格納されてる
+        // これは現在のレイアウト特有なのかもしれないので、要確認
+        var targetPos = contentHeight + GetPosY(targetRect) + targetRect.rect.height * align;
+        var gap = viewportHeight * align; // 上端〜下端あわせのための調整量
+        var normalizedPos = (targetPos - gap) / (contentHeight - viewportHeight);
+
+        normalizedPos = Mathf.Clamp01(normalizedPos);
+        scrollRect.verticalNormalizedPosition = normalizedPos;
+        return normalizedPos;
+    }
+
+    static private float GetPosY(RectTransform transform)
+    {
+        return transform.localPosition.y + transform.rect.y; //pivotによるズレをrect.yで補正
     }
 }

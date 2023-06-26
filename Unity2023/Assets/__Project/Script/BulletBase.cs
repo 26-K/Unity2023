@@ -45,7 +45,7 @@ public class BulletBase : MonoBehaviour
         if (rgd.IsSleeping())
         {
             sleepTime += Time.deltaTime;
-            if (sleepTime >= 3.0f)
+            if (sleepTime >= 1.3f)
             {
                 this.transform.position = Vector3.down * 100;
             }
