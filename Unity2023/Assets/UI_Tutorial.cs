@@ -8,6 +8,8 @@ public class UI_Tutorial : SingletonMonoBehaviour<UI_Tutorial>
     bool mapTutorialEnd = false;
     public GameObject battleTutorial;
     bool battleTutorialEnd = false;
+    public GameObject battleTutorial_2;
+    bool battleTutorial2_End = false;
 
     protected override void UnityAwake()
     {
@@ -41,5 +43,19 @@ public class UI_Tutorial : SingletonMonoBehaviour<UI_Tutorial>
     {
         battleTutorialEnd = true;
         battleTutorial.SetActive(false);
+    }
+    public void ShowBattleTutorial_2()
+    {
+        if (battleTutorial2_End)
+        {
+            return;
+        }
+        battleTutorial_2.SetActive(true);
+    }
+
+    public void EndBattleTutorial_2()
+    {
+        battleTutorial2_End = true;
+        battleTutorial_2.SetActive(false);
     }
 }

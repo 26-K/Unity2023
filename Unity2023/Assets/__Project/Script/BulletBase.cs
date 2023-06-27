@@ -50,7 +50,7 @@ public class BulletBase : MonoBehaviour
                 this.transform.position = Vector3.down * 100;
             }
         }
-        
+
     }
 
     public void ResetCombo()
@@ -73,7 +73,7 @@ public class BulletBase : MonoBehaviour
 
         // 弾き飛ばす力を計算
         Vector2 force = direction.normalized * rgd.velocity.magnitude * 10000.0f;
-        rgd.AddForce(force,ForceMode.Impulse);
+        rgd.AddForce(force, ForceMode.Impulse);
         //rgd.velocity = rgd.velocity * -3;
     }
 
@@ -82,6 +82,10 @@ public class BulletBase : MonoBehaviour
         hitcount++;
         totalHitcount++;
         if (hitcount % 5 == 0)
+        {
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collision.transform, $"Combo{hitcount}\nPow+{hitcount}");
+        }
+        else if (hitcount % 3 == 0)
         {
             InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collision.transform, $"Combo{hitcount}\nPow+{hitcount}");
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using unityroom.Api;
 
 public class ScoreUI : MonoBehaviour
 {
@@ -46,5 +47,7 @@ public class ScoreUI : MonoBehaviour
         scoreText.text += $"\n{totalScore}";
 
         naichilab.RankingLoader.Instance.SendScoreAndShowRanking(totalScore);
+        UnityroomApiClient.Instance.SendScore(1, totalScore, ScoreboardWriteMode.Always);
+        UnityroomApiClient.Instance.SendScore(2, InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo, ScoreboardWriteMode.Always);
     }
 }

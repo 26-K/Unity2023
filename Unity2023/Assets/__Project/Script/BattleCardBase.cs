@@ -162,6 +162,7 @@ public class BattleCardBase : MonoBehaviour
     {
         isPush = true;
         AudioManager.Ins.PlayCardSelectSound();
+        UI_Tutorial.Ins.EndBattleTutorial();
         if (isRewardMode)
         {
             isRewardMode = false;
@@ -210,7 +211,6 @@ public class BattleCardBase : MonoBehaviour
             Debug.Log("Use");
             isUse = true;
             cardEffect.DoUse();
-            UI_Tutorial.Ins.EndBattleTutorial();
         }
         else
         {

@@ -91,5 +91,9 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
         InGameManager.Ins.GetFieldManager().LaunchReady();
         InGameManager.Ins.GetEnemyManager().TurnProgression();
         InGameManager.Ins.GetPlayerInfoManager().TurnProgression();
+        if (elapsedTurn == 2)
+        {
+            UI_Tutorial.Ins.ShowBattleTutorial_2();
+        }
     }
 }
