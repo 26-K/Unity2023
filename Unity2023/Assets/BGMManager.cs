@@ -23,10 +23,6 @@ public class BGMManager : SingletonMonoBehaviour<BGMManager>
         {
             audios.volume = audios.volume - 0.01f;
         }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            InGameManager.Ins.GetEnemyManager().AddDamage(999);
-        }
     }
 
     public void PlayFinalBossBGM()

@@ -18,11 +18,11 @@ public class ScoreUI : MonoBehaviour
         totalScore += add;
         text.text += $"\nフロア進行 ";
         scoreText.text += $"\n{add}";
-        if (InGameManager.Ins.GetPlayerInfoManager().floor >= 13)
+        if (InGameManager.Ins.GetPlayerInfoManager().floor >= 13 && InGameManager.Ins.GetPlayerInfoManager().hp >= 1)
         {
             totalScore += 300;
             text.text += $"\nクリアおめでとう!";
-            scoreText.text += $"\n{add}";
+            scoreText.text += $"\n{totalScore}";
         }
 
         add = InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Count * 15;

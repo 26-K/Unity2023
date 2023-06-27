@@ -66,6 +66,7 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
             if (InGameManager.Ins.GetPlayerInfoManager().floor >= 13)
             {
                 InGameManager.Ins.GetGameOverUI().ShowGameClearUI();
+                InGameManager.Ins.isEndGame = true;
             }
             else
             {
