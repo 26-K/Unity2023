@@ -70,7 +70,7 @@ public class EnemyManager : MonoBehaviour
         if (TurnManager.Ins.GetCurrentTurn == TurnState.EnemyTurn)
         {
             waitTimer += Time.deltaTime;
-            if (waitTimer >= 0.5f)
+            if (waitTimer >= 0.7f)
             {
                 DoEnemyAction();
                 waitTimer = 0.0f;
