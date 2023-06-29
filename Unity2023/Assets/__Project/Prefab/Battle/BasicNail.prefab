@@ -143,5 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1bcfe03d4f6fa4b991712e7eb2008e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderers: []
+  meshRenderers:
+  - {fileID: 251984683184877460}
   hitPlaySoundType: 0

@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d542fc8aba0ac942a409c1272f5cc36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderers: []
+  meshRenderers:
+  - {fileID: 7060730884321072017}
   col: {fileID: 4036266904369668821}
 --- !u!65 &4036266904369668821
 BoxCollider:

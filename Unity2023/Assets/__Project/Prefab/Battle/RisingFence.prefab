@@ -46,7 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1bcfe03d4f6fa4b991712e7eb2008e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderers: []
+  meshRenderers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   hitPlaySoundType: 1
 --- !u!1 &4125836546913257852
 GameObject:

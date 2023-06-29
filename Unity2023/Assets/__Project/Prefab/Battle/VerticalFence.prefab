@@ -93,6 +93,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1bcfe03d4f6fa4b991712e7eb2008e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshRenderers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   hitPlaySoundType: 1
 --- !u!1001 &941990103125743064
 PrefabInstance:

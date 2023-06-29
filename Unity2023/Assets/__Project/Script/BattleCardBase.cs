@@ -17,6 +17,9 @@ public class BattleCardStatus
 }
 public class BattleCardBase : MonoBehaviour
 {
+    //todo 
+    //使用時のプレビュー
+
     public bool isPush;
     public bool isSelect;
     public bool isUse = false;
