@@ -33,6 +33,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70e12a475f8f30c4bbd0ac8c82d38acd, type: 2}
   - {fileID: 11400000, guid: 96e6014e061373d4294747a7c7eb83d0, type: 2}
   - {fileID: 11400000, guid: 56f142299d934d24fb5f91782dfec654, type: 2}
+  - {fileID: 11400000, guid: d4ecd5bbb46afc74fbb26789f411c2b0, type: 2}
   firstCards:
   - {fileID: 11400000, guid: 9828869f8de1c474f87541a8fadf92c0, type: 2}
   - {fileID: 11400000, guid: d52d8e4d57d3113499ea99e431ce8db8, type: 2}

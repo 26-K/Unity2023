@@ -11,8 +11,8 @@ public class FieldManager : MonoBehaviour
     [SerializeField] GameObject objectParent;
     [SerializeField] BulletBase pfBullet;
     [SerializeField] List<BulletBase> bulletBases;
-    [SerializeField] GameObject pfLaunchArrow;
-    [SerializeField] List<GameObject> launchArrows;
+    [LabelText("発射準備場所")][SerializeField] LaunchReady pfLaunchArrow; //発射準備場所
+    [SerializeField] List<LaunchReady> launchArrows;
     [SerializeField] GameObject removeZone;
     [SerializeField] Transform leftLaunchPos;
     [SerializeField] Transform rightLaunchPos;
@@ -53,15 +53,19 @@ public class FieldManager : MonoBehaviour
         }
     }
 
-    public void AddLaunchPos()
+    public LaunchReady AddLaunchPos()
     {
         Vector3 launchPos = new Vector3(leftLaunchPos.position.x, leftLaunchPos.position.y);
         launchPos.x = Random.Range(leftLaunchPos.position.x, rightLaunchPos.position.x);
         var a = Instantiate(pfLaunchArrow, objectParent.transform);
         a.transform.position = launchPos;
         launchArrows.Add(a);
+        return a;
     }
 
+    /// <summary>
+    /// 発射開始
+    /// </summary>
     public void LaunchStart()
     {
         timer = 0.0f;
@@ -71,7 +75,7 @@ public class FieldManager : MonoBehaviour
             Vector3 launchPos = a.transform.position;
             launchPos.z = 0;
             var b = Instantiate(pfBullet, baseField.transform);
-            b.Launch();
+            b.Launch(a.GetState());
             b.transform.position = launchPos;
             b.transform.localPosition = new Vector3(b.transform.localPosition.x, b.transform.localPosition.y, -1);
             b.AddRigid(Vector3.down);

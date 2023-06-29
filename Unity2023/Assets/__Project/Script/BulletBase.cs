@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class BulletState
+{
+    public int pow = 0; // pow
+    public int comboCount = 0;
+    public int totalComboCount = 0; // コンボリセットを考慮しないコンボ数
+}
+
 public class BulletBase : MonoBehaviour
 {
     CharacterBase owner;
@@ -9,34 +16,42 @@ public class BulletBase : MonoBehaviour
     public Rigidbody rgd;
 
     float sleepTime = 0.0f;
-
-    public int pow = 1;
     int ignoreFlame = 7;
-    int hitcount = 0;
-    int totalHitcount = 0;
+    public BulletState state = new BulletState();
+
     public virtual void Launch(CharacterBase character)
     {
         ignoreFlame = 7;
         sleepTime = 0.0f;
-        hitcount = 0;
-        totalHitcount = 0;
+        this.state = new BulletState();
+        state.comboCount = 0;
+        state.totalComboCount = 0;
     }
-    public void Launch(int pow = 5)
+    public void Launch(BulletState state = null)
     {
         ignoreFlame = 7;
         sleepTime = 0.0f;
-        hitcount = 0;
-        this.pow = pow;
+        this.state.comboCount = 0;
+        this.state.totalComboCount = 0;
+        this.state.pow = 5; //初期威力
+
+        if (state != null)
+        {
+            //追加ステータス
+            this.state.pow += state.pow;
+            this.state.comboCount += state.comboCount;
+            this.state.totalComboCount += state.totalComboCount;
+        }
     }
 
     public int CalcPow()
     {
-        return hitcount + pow;
+        return state.comboCount + state.pow;
     }
 
     public int GetCombo()
     {
-        return hitcount;
+        return state.comboCount;
     }
 
     public void Update()
@@ -55,7 +70,7 @@ public class BulletBase : MonoBehaviour
 
     public void ResetCombo()
     {
-        hitcount = 0;
+        state.comboCount = 0;
     }
 
     public void AddRigid(Vector3 vec)
@@ -79,17 +94,17 @@ public class BulletBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        hitcount++;
-        totalHitcount++;
-        if (hitcount % 5 == 0)
+        state.comboCount++;
+        state.totalComboCount++;
+        if (state.comboCount % 5 == 0)
         {
-            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collision.transform, $"Combo{hitcount}\nPow+{hitcount}");
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collision.transform, $"Combo{state.comboCount}\nPow+{state.comboCount}");
         }
-        else if (hitcount % 3 == 0)
+        else if (state.comboCount % 3 == 0)
         {
-            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collision.transform, $"Combo{hitcount}\nPow+{hitcount}");
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collision.transform, $"Combo{state.comboCount}\nPow+{state.comboCount}");
         }
-        Debug.Log($"combo{hitcount}");
+        Debug.Log($"combo{state.comboCount}");
         if (ignoreFlame > 0)
         {
             Debug.Log("ignore");
@@ -100,7 +115,7 @@ public class BulletBase : MonoBehaviour
         {
             Debug.Log("hit");
             ignoreFlame = 2;
-            damageable.TakeDamage(pow, owner);
+            damageable.TakeDamage(state.pow, owner);
         }
     }
 
