@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDataBaseSo: {fileID: 11400000, guid: 28ce11a86baa0e142b4f17af91fe65af, type: 2}
   rarityImages:
+  - {fileID: 21300000, guid: dd77367546bf4433dbbb2317a935df54, type: 3}
   - {fileID: 21300000, guid: 35d7e6588f1f34db1b9a5e62f4efdf77, type: 3}
   - {fileID: 21300000, guid: 10d23572713d041c596abf5c00be11dc, type: 3}
   - {fileID: 21300000, guid: 84063999b9e1741d099c1d8f7bbc0f7a, type: 3}

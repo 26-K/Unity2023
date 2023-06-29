@@ -69,6 +69,7 @@ public class DataBaseSO : ScriptableObject
 public enum Rarity
 {
     None,
+    Starter,
     Normal,
     Rare,
     SuperRare
