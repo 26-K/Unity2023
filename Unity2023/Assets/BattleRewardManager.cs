@@ -33,9 +33,9 @@ public class BattleRewardManager : MonoBehaviour
         {
             var b = Instantiate(InGameManager.Ins.GetCardManager().cardBase, obj.transform);
             b.Init(a);
-            b.transform.DOLocalMoveX(baseInst.x + (cnts * 300), 0.5f,true);
+            b.transform.DOLocalMoveX(baseInst.x + (cnts * 300), 0.5f, true);
             battleCardObjects.Add(b);
-            
+
             cnts++;
         }
     }
@@ -63,7 +63,8 @@ public class BattleRewardManager : MonoBehaviour
 
     /// <summary>
     /// カードのレアリティ毎の出現率を計算する
-    /// ノーマル :55%
+    /// スターター:25%
+    /// ノーマル :30%
     /// レア :37%
     /// 凄いレア : 8%
     /// </summary>
@@ -71,7 +72,13 @@ public class BattleRewardManager : MonoBehaviour
     public Rarity LotteryRarity()
     {
         int randVal = Random.Range(0, 100);
-        randVal -= 55;//ノーマル
+
+        randVal -= 25;//スターター
+        if (randVal <= 0)
+        {
+            return Rarity.Starter;
+        }
+        randVal -= 30;//ノーマル
         if (randVal <= 0)
         {
             return Rarity.Normal;
