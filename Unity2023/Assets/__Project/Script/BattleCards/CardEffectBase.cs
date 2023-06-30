@@ -54,8 +54,6 @@ public class CardEffectBase : ScriptableObject
         Vector3 placementPosition = worldPosition + offset;
 
         // オブジェクトを配置する位置に移動させる
-        model.transform.position = placementPosition;
-
         var a = Instantiate(model, placementPosition, Quaternion.identity);
 
         InGameManager.Ins.GetFieldManager().SetObject(a);
@@ -64,11 +62,4 @@ public class CardEffectBase : ScriptableObject
        
     }
 
-    public void ShowModel(Vector3 pos)
-    {
-        //if (isSet && )
-        //{
-
-        //}
-    }
 }

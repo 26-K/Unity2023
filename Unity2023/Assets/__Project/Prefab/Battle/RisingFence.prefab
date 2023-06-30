@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4125836546003186580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.475729, y: 2.3009703, z: 10}
+  m_LocalPosition: {x: -7.7419343, y: 6.9911003, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4675072873430253640}
+  - {fileID: 1852116716838186542}
+  - {fileID: 1852116716424831922}
   hitPlaySoundType: 1
 --- !u!1 &4125836546913257852
 GameObject:
@@ -223,6 +223,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1265710440069002374, guid: 5b408fb013451024e8a472a9f151a284, type: 3}
   m_PrefabInstance: {fileID: 4125836546236331203}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &4675072873430253640 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8764242887259829387, guid: 5b408fb013451024e8a472a9f151a284, type: 3}
+  m_PrefabInstance: {fileID: 4125836546236331203}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4125836546569325397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -296,6 +301,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e8b87f4dff63643bc609327a10963e, type: 3}
+--- !u!23 &1852116716838186542 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2375050866448475515, guid: e5e8b87f4dff63643bc609327a10963e, type: 3}
+  m_PrefabInstance: {fileID: 4125836546569325397}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6612464920568568157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7099321958720754184, guid: e5e8b87f4dff63643bc609327a10963e, type: 3}
@@ -374,6 +384,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e8b87f4dff63643bc609327a10963e, type: 3}
+--- !u!23 &1852116716424831922 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2375050866448475515, guid: e5e8b87f4dff63643bc609327a10963e, type: 3}
+  m_PrefabInstance: {fileID: 4125836546697168585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6612464921783030977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7099321958720754184, guid: e5e8b87f4dff63643bc609327a10963e, type: 3}

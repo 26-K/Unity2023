@@ -38,4 +38,20 @@ public class SetObjectBase : MonoBehaviour
     }
 
     public virtual void TouchEnterAction(Collision collision) { }
+
+    public void SetPreview()
+    {
+        this.transform.gameObject.layer = 2;
+        foreach (var a in meshRenderers)
+        {
+            Color col = new Color();
+            if (a.material == null)
+            {
+                continue;
+            }
+            col = a.material.color;
+            col.a = 0.4f;
+            a.material.color = col;
+        }
+    }
 }

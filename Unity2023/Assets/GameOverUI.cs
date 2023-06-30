@@ -12,9 +12,11 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] ScoreUI score;
     [SerializeField] TextMeshProUGUI clearText;
     [SerializeField] TextMeshProUGUI gameEndText;
+    [SerializeField] GameObject tweetButton;
     [SerializeField] GameObject titleButton;
     [SerializeField] GameObject deckPos;
     [SerializeField] BattleCardBase battleCardBase;
+    bool isGameClear = false;
     private void Start()
     {
         obj.SetActive(false);
@@ -22,6 +24,7 @@ public class GameOverUI : MonoBehaviour
     public void ShowGameOverUI()
     {
         obj.SetActive(true);
+        isGameClear = false;
         anim.Play("GameOver");
         DOVirtual.DelayedCall(2.0f, () =>
         {
@@ -34,6 +37,7 @@ public class GameOverUI : MonoBehaviour
     public void ShowGameClearUI()
     {
         obj.SetActive(true);
+        isGameClear = true;
         clearText.text = "GameClear!";
         anim.Play("GameOver");
         DOVirtual.DelayedCall(2.0f, () =>
@@ -45,7 +49,8 @@ public class GameOverUI : MonoBehaviour
         });
         DOVirtual.DelayedCall(9.0f, () =>
         {
-            gameEndText.transform.gameObject.SetActive(true);
+            tweetButton.SetActive(true);
+            //gameEndText.transform.gameObject.SetActive(true);
         });
     }
 
@@ -69,6 +74,18 @@ public class GameOverUI : MonoBehaviour
                  card.gameObject.transform.DOScale(Vector3.one, 0.35f);
              });
             cnt += 0.15f;
+        }
+    }
+
+    public void PushTweetButton()
+    {
+        if (isGameClear)
+        {
+            StartCoroutine(TweetWithScreenShot.TweetManager.TweetWithScreenShot($"[ダウンヒーロー] ゲームクリア! (ベーシックダンジョン)　デッキ枚数:{InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Count}枚 \nスコア{score.GetScore()}\n https://unityroom.com/games/downhero"));
+        }
+        else
+        {
+            StartCoroutine(TweetWithScreenShot.TweetManager.TweetWithScreenShot($"[ダウンヒーロー] 力尽きた… (ベーシックダンジョン) ({InGameManager.Ins.GetPlayerInfoManager().floor}F \nスコア:{score.GetScore()}\n)"));
         }
     }
 }

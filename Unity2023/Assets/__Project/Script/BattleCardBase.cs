@@ -44,6 +44,7 @@ public class BattleCardBase : MonoBehaviour
     float drawPileWaitTimer = 0.0f;
     CardEffectBase cardEffect;
     bool isRewardMode = false;
+    SetObjectBase setPreview = null;
     public void Init(RectTransform rect, Canvas parentCanvas, CardEffectBase cardEffect)
     {
         isRewardMode = false;
@@ -105,6 +106,14 @@ public class BattleCardBase : MonoBehaviour
         else if (nowPile == NowPile.DiscardToDrawMoveNowPile)
         {
         }
+        if (isPush == false)
+        {
+            if (setPreview != null)
+            {
+                Destroy(setPreview.gameObject);
+                setPreview = null;
+            }
+        }
         currentPos = Vector2.Lerp(currentPos, targetPos, 0.1f);
         sizeRect.anchoredPosition = currentPos;
         currentScale = Vector3.Lerp(currentScale, targetScale, 0.1f);
@@ -121,7 +130,18 @@ public class BattleCardBase : MonoBehaviour
             mousePosition.y += marginCard.y;
             currentPos = mousePosition;
             targetScale = Vector3.one * 0.5f;
-
+            if (cardEffect.isSet)
+            {
+                Vector3 mousePos = Input.mousePosition;
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
+                worldPosition.z = 1;
+                if (setPreview == null)
+                {
+                    setPreview = Instantiate(cardEffect.model);
+                    setPreview.SetPreview();
+                }
+                setPreview.transform.position = worldPosition;
+            }
         }
         else
         {
@@ -134,6 +154,11 @@ public class BattleCardBase : MonoBehaviour
             {
                 targetPos.y = 0.0f + addPos.y;
                 targetScale = Vector3.one * 1.0f;
+            }
+            if (setPreview != null)
+            {
+                Destroy(setPreview.gameObject);
+                setPreview = null;
             }
         }
     }
@@ -188,6 +213,7 @@ public class BattleCardBase : MonoBehaviour
 
         // マウスの位置をワールド座標に変換
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        
         RaycastHit hit;
 
         // Raycastを実行して3Dオブジェクトとの衝突を判定

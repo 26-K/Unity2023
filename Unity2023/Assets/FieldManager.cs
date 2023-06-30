@@ -17,6 +17,8 @@ public class FieldManager : MonoBehaviour
     [SerializeField] Transform leftLaunchPos;
     [SerializeField] Transform rightLaunchPos;
     [SerializeField] [LabelText("フィールドのチェックインターバル")] float fieldCheckInterval = 0.5f;
+
+    [LabelText("配置エフェクト")][SerializeField] GameObject objectSetEffectObj;
     float timer = 0.0f;
     float launchTimer = 0.0f; //発射されてからの時間、一定時間立つと強制次のターン(ハマリ防止)
     // Start is called before the first frame update
@@ -148,5 +150,7 @@ public class FieldManager : MonoBehaviour
         obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, obj.transform.localPosition.y + 0.1f, 0);
         obj.transform.DOLocalMove(targetPos - Vector3.up * 0.1f, 0.3f);
         setObjects.Add(obj);
+
+        Instantiate(objectSetEffectObj).transform.position = obj.transform.position; //オブジェクト配置エフェクト
     }
 }

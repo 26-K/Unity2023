@@ -8,7 +8,7 @@ public class ScoreUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] TextMeshProUGUI scoreText;
-
+    int retScore = 0;
     public void Init()
     {
         text.text = "";
@@ -18,7 +18,8 @@ public class ScoreUI : MonoBehaviour
         totalScore += add;
         text.text += $"\nフロア進行 ";
         scoreText.text += $"\n{add}";
-        if (InGameManager.Ins.GetPlayerInfoManager().floor >= 13) //クリアボーナスは仮で300点
+
+        if (InGameManager.Ins.GetPlayerInfoManager().floor >= 13 && InGameManager.Ins.GetPlayerInfoManager().hp >= 1)
         {
             totalScore += 300;
             text.text += $"\nクリアおめでとう!";
@@ -49,5 +50,12 @@ public class ScoreUI : MonoBehaviour
         naichilab.RankingLoader.Instance.SendScoreAndShowRanking(totalScore);
         UnityroomApiClient.Instance.SendScore(1, totalScore, ScoreboardWriteMode.Always);
         UnityroomApiClient.Instance.SendScore(2, InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo, ScoreboardWriteMode.Always);
+
+        retScore = totalScore;
+    }
+
+    public int GetScore()
+    {
+        return retScore;
     }
 }
