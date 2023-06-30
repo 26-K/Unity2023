@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDataBaseSo: {fileID: 11400000, guid: 28ce11a86baa0e142b4f17af91fe65af, type: 2}
   rarityImages:
+  - {fileID: 21300000, guid: dd77367546bf4433dbbb2317a935df54, type: 3}
   - {fileID: 21300000, guid: 35d7e6588f1f34db1b9a5e62f4efdf77, type: 3}
   - {fileID: 21300000, guid: 10d23572713d041c596abf5c00be11dc, type: 3}
   - {fileID: 21300000, guid: 84063999b9e1741d099c1d8f7bbc0f7a, type: 3}
@@ -32,6 +33,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70e12a475f8f30c4bbd0ac8c82d38acd, type: 2}
   - {fileID: 11400000, guid: 96e6014e061373d4294747a7c7eb83d0, type: 2}
   - {fileID: 11400000, guid: 56f142299d934d24fb5f91782dfec654, type: 2}
+  - {fileID: 11400000, guid: d4ecd5bbb46afc74fbb26789f411c2b0, type: 2}
   firstCards:
   - {fileID: 11400000, guid: 9828869f8de1c474f87541a8fadf92c0, type: 2}
   - {fileID: 11400000, guid: d52d8e4d57d3113499ea99e431ce8db8, type: 2}

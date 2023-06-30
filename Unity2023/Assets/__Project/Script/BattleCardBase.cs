@@ -17,6 +17,9 @@ public class BattleCardStatus
 }
 public class BattleCardBase : MonoBehaviour
 {
+    //todo 
+    //使用時のプレビュー
+
     public bool isPush;
     public bool isSelect;
     public bool isUse = false;
@@ -181,6 +184,7 @@ public class BattleCardBase : MonoBehaviour
         isPush = false;
 
         Vector3 mousePosition = Input.mousePosition;
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
         // マウスの位置をワールド座標に変換
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
@@ -193,8 +197,21 @@ public class BattleCardBase : MonoBehaviour
             if (hit.collider.CompareTag("BattleField"))
             {
                 // 重なっているので使用可能
-                TryUse();
+                TryUse(worldPosition);
             }
+            else if (hit.collider.CompareTag("CantPlayArea"))
+            {
+                InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(worldPosition, "プレイエリア外", "DamagePopUp");
+            }
+            else
+            {
+                InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(worldPosition, "重なっています", "DamagePopUp");
+            }
+        }
+        else
+        {
+            Debug.Log("プレイエリア外");
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(worldPosition, "プレイエリア外", "DamagePopUp");
         }
 
         if (isUse == true)
@@ -204,7 +221,7 @@ public class BattleCardBase : MonoBehaviour
         }
     }
 
-    private void TryUse()
+    private void TryUse(Vector3 pos)
     {
         if (cardEffect.CanUse())
         {
@@ -215,6 +232,7 @@ public class BattleCardBase : MonoBehaviour
         else
         {
             Debug.Log("カード使用失敗!");
+            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(pos, "コスト不足", "DamagePopUp");
         }
     }
 

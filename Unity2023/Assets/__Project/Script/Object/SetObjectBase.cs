@@ -5,6 +5,7 @@ using UnityEngine;
 public class SetObjectBase : MonoBehaviour
 {
     int ignoreFlame = 0;
+    [SerializeField] List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
     private void Update()
     {
         ignoreFlame--;

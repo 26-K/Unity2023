@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9480ea58fe21c934793c52e4b49aca30, type: 3}
+  m_Name: so--16_Card_ComboBall
+  m_EditorClassIdentifier: 
+  model: {fileID: 0}
+  isSet: 1
+  id: 16
+  rarity: 3
+  sprite: {fileID: 21300000, guid: c355f4cfea95485489469239692e1e32, type: 3}
+  cost: 2
+  cardName: "\u30B3\u30F3\u30DC\u30DC\u30FC\u30EB"
+  cardText: "3\u30B3\u30F3\u30DC\u304B\u3089\u958B\u59CB\u3059\u308B\u30DC\u30FC\u30EB\u306E\u767A\u5C04\u7B87\u6240\u3092\u8FFD\u52A0!"

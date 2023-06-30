@@ -15,7 +15,7 @@ MonoBehaviour:
   model: {fileID: 0}
   isSet: 0
   id: 10
-  rarity: 3
+  rarity: 4
   sprite: {fileID: 21300000, guid: 61725b696bb9b4c73bb7f577825b65b2, type: 3}
   cost: 0
   cardName: "\u5F37\u6B32\u306E\u584A"

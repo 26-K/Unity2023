@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - BattleField
+  - Panel
+  - CantPlayArea
   layers:
   - Default
   - TransparentFX

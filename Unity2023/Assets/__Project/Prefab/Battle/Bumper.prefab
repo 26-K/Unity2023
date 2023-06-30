@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5127175837463116578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2124062, y: 4.1165395, z: 10}
+  m_LocalPosition: {x: -5.446601, y: -0.6116509, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d2baa1908e8444ebf88e288170cc37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshRenderers:
+  - {fileID: 5148649215362889243}
   anim: {fileID: 2358376656806059651}
 --- !u!95 &2358376656806059651
 Animator:
@@ -191,5 +193,10 @@ PrefabInstance:
 --- !u!4 &5127404148260875937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4311916672380040, guid: 18353bbdf23cf024cb6e7ccbf0f18af6, type: 3}
+  m_PrefabInstance: {fileID: 5127175837136372265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5148649215362889243 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23870863639491634, guid: 18353bbdf23cf024cb6e7ccbf0f18af6, type: 3}
   m_PrefabInstance: {fileID: 5127175837136372265}
   m_PrefabAsset: {fileID: 0}
