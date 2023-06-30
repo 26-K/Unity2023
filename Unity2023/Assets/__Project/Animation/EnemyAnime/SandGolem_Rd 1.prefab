@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b084221f0d63f7e46bded9c4481fbf4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHP: 200
+  BaseHP: 150
   anim: {fileID: 2204087728888095171}
   enemyActions:
   - actionType: 2
@@ -951,6 +951,9 @@ MonoBehaviour:
   - actionType: 2
     actionPow: 1
     quote: "\u30DC\u30A6\u30AE\u30E7\u30BF\u30A4\u30BB\u30A4\u2026"
+  - actionType: 3
+    actionPow: 1
+    quote: 
   - actionType: 1
     actionPow: 20
     quote: 
@@ -964,13 +967,13 @@ MonoBehaviour:
     actionPow: 1
     quote: 
   - actionType: 0
-    actionPow: 20
+    actionPow: 16
     quote: 
   - actionType: 3
     actionPow: 1
     quote: 
   - actionType: 0
-    actionPow: 20
+    actionPow: 16
     quote: 
   - actionType: 3
     actionPow: 1
@@ -1000,7 +1003,7 @@ MonoBehaviour:
     actionPow: 1
     quote: 
   - actionType: 0
-    actionPow: 45
+    actionPow: 35
     quote: 
   - actionType: 3
     actionPow: 1

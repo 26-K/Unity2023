@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDatas:
   - minFloor: 0
-    maxFloor: 5
+    maxFloor: 12
     enemy: {fileID: 1302736074445084821, guid: e91459e55906fd24bbbc4dfe8e2c38a6, type: 3}
   - minFloor: 6
     maxFloor: 12
     enemy: {fileID: 8233281643172404352, guid: edf9f7793a393e744b634222343ae11b, type: 3}
   - minFloor: 1
-    maxFloor: 12
+    maxFloor: 8
     enemy: {fileID: 8233281643172404352, guid: 2b33927502a7f8f4fb44cf408e7b8add, type: 3}
   - minFloor: 2
     maxFloor: 12
@@ -28,3 +28,12 @@ MonoBehaviour:
   - minFloor: 13
     maxFloor: 33
     enemy: {fileID: -8640835722367193100, guid: 193a1ac0675e9104a92c2ab03e3714bd, type: 3}
+  - minFloor: 4
+    maxFloor: 10
+    enemy: {fileID: 8233281643172404352, guid: 8178bcdbb19c29a4b96f475566e1a9cd, type: 3}
+  - minFloor: 5
+    maxFloor: 12
+    enemy: {fileID: 8233281643172404352, guid: df914132c2422af4ca9407f738c49336, type: 3}
+  - minFloor: 0
+    maxFloor: 8
+    enemy: {fileID: 8233281643172404352, guid: 28fee7f95dbfca9409591810f456cd5b, type: 3}

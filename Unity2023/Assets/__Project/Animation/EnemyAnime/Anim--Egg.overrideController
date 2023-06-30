@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Anim--Egg
+  m_Controller: {fileID: 9100000, guid: c4c832ce9a2e3fc4fbb1c4eeae3edff6, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f50b2a74065e11f4e80f030809aa1560, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 0f23c8ff790cee54e919aa85637da5ff, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5279ffa0241322d4f9e5ce114ef07687, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 459efbc5a0f8af2449357dac4ca1ea24, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a11566ef7f906c842a4703c6be8e99f7, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 9ff6b9204976fa049b979e149ef34e45, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5ac00d3df3341eb4cb96d7fc548cfdd2, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 8fac009332b93614db57e19b0f0e15af, type: 2}
