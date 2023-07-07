@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: e9ea4ef7e0aa37645bb28565b52750d4
+labels:
+- Data
+- ScriptableObject
+- so--EventBase
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
