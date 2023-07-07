@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_RemoveCardManager : MonoBehaviour
+public class UI_RemoveCardManager : SingletonMonoBehaviour<UI_RemoveCardManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] List<BattleCardBase> battleCards = new List<BattleCardBase>();
+    protected override void UnityAwake()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InitShow()
     {
-        
+        var cards = InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses;
+        foreach (var a in cards)
+        {
+
+        }
     }
 }
