@@ -70,8 +70,9 @@ public class GameOverUI : MonoBehaviour
                  var cardEffect = InGameManager.Ins.GetDatabase().GetCardData(b.id);
                  cardEffect.Init(InGameManager.Ins);
                  card.Init(cardEffect);
+                 card.isNoTouchMode = true;
                  card.gameObject.transform.localScale = Vector3.zero;
-                 card.gameObject.transform.DOScale(Vector3.one, 0.35f);
+                 card.gameObject.transform.DOScale(Vector3.one * 0.5f, 0.35f);
              });
             cnt += 0.15f;
         }
@@ -85,7 +86,7 @@ public class GameOverUI : MonoBehaviour
         }
         else
         {
-            StartCoroutine(TweetWithScreenShot.TweetManager.TweetWithScreenShot($"[ダウンヒーロー] 力尽きた… (ベーシックダンジョン) ({InGameManager.Ins.GetPlayerInfoManager().floor}F \nスコア:{score.GetScore()}\n)"));
+            StartCoroutine(TweetWithScreenShot.TweetManager.TweetWithScreenShot($"[ダウンヒーロー] {InGameManager.Ins.GetPlayerInfoManager().floor}Fで力尽きた… (ベーシックダンジョン) \n　デッキ枚数:{InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Count}枚 \nスコア{score.GetScore()}\n https://unityroom.com/games/downhero"));
         }
     }
 }

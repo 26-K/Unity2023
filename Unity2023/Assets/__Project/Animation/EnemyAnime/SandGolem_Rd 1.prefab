@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b084221f0d63f7e46bded9c4481fbf4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHP: 150
+  BaseHP: 220
   anim: {fileID: 2204087728888095171}
   enemyActions:
   - actionType: 2
@@ -973,7 +973,7 @@ MonoBehaviour:
     actionPow: 1
     quote: 
   - actionType: 0
-    actionPow: 16
+    actionPow: 18
     quote: 
   - actionType: 3
     actionPow: 1

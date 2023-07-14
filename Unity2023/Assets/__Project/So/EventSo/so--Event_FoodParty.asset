@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01798383e00ad3744a0507d94b33c791, type: 3}
+  m_Name: so--Event_FoodParty
+  m_EditorClassIdentifier: 
+  title: "\u30D5\u30FC\u30C9\u30D1\u30FC\u30C6\u30A3"
+  desc: "\u7F8E\u5473\u3057\u305D\u3046\u306A\u8089\u306B\u30B1\u30FC\u30AD\u307E\u3067\u3042\u308B\uFF01\n\u597D\u304D\u306A\u306E\u3092\uFF11\u3064\u98DF\u3079\u3066\u3082\u826F\u3044\u305D\u3046\u3060\u3002\n\u3069\u308C\u3092\u98DF\u3079\u308B\uFF1F\n"
+  imageSprite: {fileID: 21300000, guid: f9ad18685387ef74b9e3a0891758dc0c, type: 3}
+  selectCount: 3
+  select_1: "\u8089\u3092\u98DF\u3079\u308B! (\u6700\u5927HP+5)"
+  select_2: "\u30B1\u30FC\u30AD\u3092\u98DF\u3079\u308B! (HP+20)"
+  select_3: "\u3044\u3089\u306A\u3044 (\u30C7\u30C3\u30AD\u304B\u3089\u30AB\u30FC\u30C9\u30921\u679A\u524A\u9664)"
+  afterSelect_1: "\u53E3\u306E\u4E2D\u3067\u3068\u308D\u3051\u308B\u3050\u3089\u3044\u3084\u308F\u3089\u304B\u3044\uFF01\n\u30B9\u30BF\u30DF\u30CA\u3082\u3064\u3044\u3066\u6700\u9AD8\u3060\uFF01"
+  afterSelect_2: "\u6975\u4E0A\u306E\u7518\u3055\u3060\uFF01\n\u75B2\u308C\u3082\u5439\u304D\u98DB\u3076\uFF01"
+  afterSelect_3: "\u4ECA\u306F\u305D\u3093\u306A\u6C17\u5206\u3067\u306F\u306A\u3044\u3002\n\u6B21\u306E\u6A5F\u4F1A\u306B\u3057\u3088\u3046\u3002"

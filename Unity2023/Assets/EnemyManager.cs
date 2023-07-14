@@ -53,6 +53,7 @@ public class EnemyManager : MonoBehaviour
         {
             InGameManager.Ins.GetPlayerInfoManager().player.PlayAttack();
             AudioManager.Ins.PlayFireImpactSound();
+            AudioManager.Ins.PlayFireImpactSound();
             InGameManager.Ins.GetPlayerInfoManager().SetDiffDamage(damageVal);
             a.ObtainDamage(damageVal);
             Instantiate(damageEffectFire).transform.position = a.transform.position;

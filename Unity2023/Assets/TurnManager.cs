@@ -31,6 +31,8 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
         InGameManager.Ins.GetFieldManager().LaunchReady();
         InGameManager.Ins.GetEnemyManager().TurnProgression();
         InGameManager.Ins.GetPlayerInfoManager().TurnProgression();
+        InGameManager.Ins.GetRelicManager().BattleStartCheck();
+        InGameManager.Ins.GetRelicManager().TurnStartCheck(elapsedTurn);
     }
 
     /// <summary>
@@ -62,8 +64,10 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
         if (InGameManager.Ins.GetEnemyManager().IsDestroyAllEnemy())
         {
             Debug.Log("Youwin");
+            InGameManager.Ins.GetPlayerInfoManager().TurnProgression();
             currentTurn = TurnState.PlayerTurn;
-            if (InGameManager.Ins.GetPlayerInfoManager().floor >= 13)
+            InGameManager.Ins.GetCardManager().AllDiscard();
+            if (InGameManager.Ins.GetPlayerInfoManager().floor >= 20)
             {
                 InGameManager.Ins.GetGameOverUI().ShowGameClearUI();
                 InGameManager.Ins.isEndGame = true;
@@ -96,5 +100,6 @@ public class TurnManager : SingletonMonoBehaviour<TurnManager>
         {
             UI_Tutorial.Ins.ShowBattleTutorial_2();
         }
+        InGameManager.Ins.GetRelicManager().TurnStartCheck(elapsedTurn);
     }
 }

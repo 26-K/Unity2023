@@ -15,6 +15,7 @@ public class BulletBase : MonoBehaviour
     public Vector3 spd;
     public Rigidbody rgd;
 
+    float lifeTime = 20.0f;
     float sleepTime = 0.0f;
     int ignoreFlame = 7;
     public BulletState state = new BulletState();
@@ -42,6 +43,7 @@ public class BulletBase : MonoBehaviour
             this.state.comboCount += state.comboCount;
             this.state.totalComboCount += state.totalComboCount;
         }
+        lifeTime = 20.0f;
     }
 
     public int CalcPow()
@@ -57,6 +59,7 @@ public class BulletBase : MonoBehaviour
     public void Update()
     {
         ignoreFlame--;
+        lifeTime -= Time.deltaTime;
         if (rgd.IsSleeping())
         {
             sleepTime += Time.deltaTime;
@@ -64,6 +67,10 @@ public class BulletBase : MonoBehaviour
             {
                 this.transform.position = Vector3.down * 100;
             }
+        }
+        if (lifeTime <= 0.0f)
+        {
+            this.transform.position = Vector3.down * 100;
         }
 
     }
@@ -96,6 +103,7 @@ public class BulletBase : MonoBehaviour
     {
         state.comboCount++;
         state.totalComboCount++;
+        InGameManager.Ins.GetRelicManager().ComboEnableCheck(state.comboCount);
         if (state.comboCount % 5 == 0)
         {
             InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(collision.transform, $"Combo{state.comboCount}\nPow+{state.comboCount}");
@@ -110,12 +118,10 @@ public class BulletBase : MonoBehaviour
             Debug.Log("ignore");
             return;
         }
-        var damageable = collision.gameObject.GetComponent<IDamageable>();
-        if (damageable != null)
+        var hitable = collision.gameObject.GetComponent<IObject>();
+        if (hitable != null)
         {
-            Debug.Log("hit");
-            ignoreFlame = 2;
-            damageable.TakeDamage(state.pow, owner);
+            hitable.HitObject();
         }
     }
 

@@ -15,6 +15,8 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
     [SerializeField] UI_PopUpManager popUpManager;
     [SerializeField] BattleRewardManager battleRewardManager;
     [SerializeField] GameOverUI gameOverUI;
+    [SerializeField] RelicManager relicManager;
+    [SerializeField] DungeonEventManager dungeonEventManager;
     public DataBaseSO GetDatabase() => dataBaseSO;
     public CardManager GetCardManager() => cardManager;
     public FieldManager GetFieldManager() => fieldManager;
@@ -23,6 +25,8 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
     public UI_PopUpManager GetUI_PopUpManager() => popUpManager;
     public BattleRewardManager GetBattleRewardManager() => battleRewardManager;
     public GameOverUI GetGameOverUI() => gameOverUI;
+    public RelicManager GetRelicManager() => relicManager;
+    public DungeonEventManager GetDungeonEventManager() => dungeonEventManager;
 
     protected override void UnityAwake()
     {

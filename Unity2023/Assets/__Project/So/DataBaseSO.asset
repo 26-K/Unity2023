@@ -36,6 +36,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d4ecd5bbb46afc74fbb26789f411c2b0, type: 2}
   - {fileID: 11400000, guid: a67bd87b66bbed041997cc3f2dad8460, type: 2}
   - {fileID: 11400000, guid: 35c84cc2e09816646b4850ffe2cfa670, type: 2}
+  - {fileID: 11400000, guid: 021cced163200df43a149404e7a5703c, type: 2}
+  - {fileID: 11400000, guid: 9779a148a9987e841b5bc0dbca8b0133, type: 2}
+  events:
+  - {fileID: 11400000, guid: 916dfd8bd83121d4f955813ccf6bcb87, type: 2}
+  - {fileID: 11400000, guid: 7f86960c869474c419090401db853643, type: 2}
+  - {fileID: 11400000, guid: 3e1bebf04006ed9408c5b3410c8a3394, type: 2}
+  - {fileID: 11400000, guid: b129b3423bf3f594d8b1bfd8b9ccf25d, type: 2}
+  relics:
+  - {fileID: 11400000, guid: 08e03600d79f80b4eab4f7c2e065e5af, type: 2}
+  - {fileID: 11400000, guid: 373e8cab3a9264e48876cbd04c8c6827, type: 2}
+  - {fileID: 11400000, guid: 17ab79b75b7f3f34488f8a7d76d309ba, type: 2}
+  - {fileID: 11400000, guid: aaf0e831d3cb59440a637374d424b464, type: 2}
+  - {fileID: 11400000, guid: 122e86cd5efdfe84aa5de98f95cf00e1, type: 2}
   firstCards:
   - {fileID: 11400000, guid: 9828869f8de1c474f87541a8fadf92c0, type: 2}
   - {fileID: 11400000, guid: d52d8e4d57d3113499ea99e431ce8db8, type: 2}

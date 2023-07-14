@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3866742054209141666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 1.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -63,6 +63,7 @@ MonoBehaviour:
   meshRenderers:
   - {fileID: 150064678063261027}
   hitPlaySoundType: 0
+  objectName: Nail
 --- !u!1 &4897152745107126333
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +295,7 @@ MonoBehaviour:
   - {fileID: 150064678063261027}
   - {fileID: 4859288905677269124}
   hitPlaySoundType: 0
+  objectName: Nail
 --- !u!1 &8285153443525274586
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8285153443525274586}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -1.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -357,3 +359,4 @@ MonoBehaviour:
   meshRenderers:
   - {fileID: 4859288905677269124}
   hitPlaySoundType: 0
+  objectName: Nail

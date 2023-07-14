@@ -19,11 +19,11 @@ public class ScoreUI : MonoBehaviour
         text.text += $"\nフロア進行 ";
         scoreText.text += $"\n{add}";
 
-        if (InGameManager.Ins.GetPlayerInfoManager().floor >= 13 && InGameManager.Ins.GetPlayerInfoManager().hp >= 1)
+        if (InGameManager.Ins.GetPlayerInfoManager().floor >= 20 && InGameManager.Ins.GetPlayerInfoManager().hp >= 1)
         {
-            totalScore += 300;
+            totalScore += 500;
             text.text += $"\nクリアおめでとう!";
-            scoreText.text += $"\n{300}";
+            scoreText.text += $"\n{500}";
         }
 
         add = InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Count * 15;
@@ -31,14 +31,19 @@ public class ScoreUI : MonoBehaviour
         text.text += $"\nカード所持数 ";
         scoreText.text += $"\n{add}";
 
-        add = InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo * 12;
+        add = Mathf.Max(InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo, 20) * 15;
         totalScore += add;
         text.text += $"\n最大コンボ ";
         scoreText.text += $"\n{add}";
 
-        add = (int)(InGameManager.Ins.GetPlayerInfoManager().GetDiffDamage * 0.4f);
+        add = (int)(InGameManager.Ins.GetPlayerInfoManager().GetDiffDamage * 0.6f);
         totalScore += add;
         text.text += $"\n与被ダメージ差分 ";
+        scoreText.text += $"\n{add}";
+
+        add = (int)(InGameManager.Ins.GetPlayerInfoManager().relics.Count * 50.0f);
+        totalScore += add;
+        text.text += $"\nレリック所持数 ";
         scoreText.text += $"\n{add}";
 
         text.text += $"\n---------------------";

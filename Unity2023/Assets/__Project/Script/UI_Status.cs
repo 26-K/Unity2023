@@ -24,7 +24,7 @@ public class UI_Status : MonoBehaviour
         {
             floorText.text = $"{parent.GetPlayerInfoManager().floor}F";
             hpText.text = $"{parent.GetPlayerInfoManager().hp}/{parent.GetPlayerInfoManager().maxHp}";
-            coinText.text = $"{0}";
+            //coinText.text = $"{0}";
         }
 
         //キーボードのSが押されている間はスコア表示

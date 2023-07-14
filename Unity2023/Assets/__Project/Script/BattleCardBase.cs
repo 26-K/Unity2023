@@ -10,9 +10,20 @@ public enum NowPile
     DiscardPile,
     DiscardToDrawMoveNowPile,
 }
+
+public enum OtherCardMode
+{
+    NormalMode,
+    RewardMode,
+    RemoveMode,
+    UpgradeMode,
+    NoneMode,
+}
+
 public class BattleCardStatus
 {
     public int id = 0;
+    public int index = 0;
     public int level = 0;
 }
 public class BattleCardBase : MonoBehaviour
@@ -43,11 +54,14 @@ public class BattleCardBase : MonoBehaviour
     Vector2 marginCard = new Vector2(0.0f, -200.0f);
     float drawPileWaitTimer = 0.0f;
     CardEffectBase cardEffect;
-    bool isRewardMode = false;
+    public bool isNoTouchMode = false;
     SetObjectBase setPreview = null;
+    BattleCardStatus battleCardStatus = new BattleCardStatus();
+    OtherCardMode otherCardMode = OtherCardMode.NormalMode;
     public void Init(RectTransform rect, Canvas parentCanvas, CardEffectBase cardEffect)
     {
-        isRewardMode = false;
+        isNoTouchMode = false;
+        otherCardMode = OtherCardMode.NormalMode;
         this.handRect = rect;
         this.parentRect = parentCanvas.GetComponent<RectTransform>();
         this.canvas = parentCanvas;
@@ -62,13 +76,25 @@ public class BattleCardBase : MonoBehaviour
     }
     public void Init(CardEffectBase cardEffect)
     {
-        isRewardMode = true;
         this.cardEffect = cardEffect;
         this.cardImage.sprite = cardEffect.sprite;
         cardNameText.text = cardEffect.cardName; //カード名
         cardDescText.text = cardEffect.cardText; //カードテキスト(説明)
         costText.text = $"{cardEffect.cost}";
         backRarityImage.sprite = InGameManager.Ins.GetDatabase().GetCardBackImage((int)cardEffect.rarity);
+    }
+
+    public void SetStatus(BattleCardStatus battleCardStatus)
+    {
+        this.battleCardStatus = battleCardStatus;
+    }
+    public BattleCardStatus GetStatus()
+    {
+        return this.battleCardStatus;
+    }
+    public void SetOtherMode(OtherCardMode otherCardMode)
+    {
+        this.otherCardMode = otherCardMode;
     }
 
     /// <summary>
@@ -88,7 +114,7 @@ public class BattleCardBase : MonoBehaviour
     }
     private void Update()
     {
-        if (isRewardMode)
+        if (otherCardMode == OtherCardMode.RewardMode)
         {
             return;
         }
@@ -176,6 +202,15 @@ public class BattleCardBase : MonoBehaviour
     {
         AudioManager.Ins.PlayCardHoverSound();
         isSelect = true;
+        if (isNoTouchMode)
+        {
+            return;
+        }
+
+        if (otherCardMode != OtherCardMode.NormalMode)
+        {
+            return;
+        }
         this.transform.SetAsLastSibling(); //Hierarkey最後尾に移動させて画面上で最前面に表示させる
     }
 
@@ -183,29 +218,54 @@ public class BattleCardBase : MonoBehaviour
     public void OnPointerExit()
     {
         isSelect = false;
+        if (isNoTouchMode)
+        {
+            return;
+        }
+        if (otherCardMode != OtherCardMode.NormalMode)
+        {
+            return;
+        }
         this.transform.SetAsFirstSibling(); //Hierarkey最前面に移動させて画面上で最前面に表示させる
     }
 
     public void OnPointerDown()
     {
+        if (isNoTouchMode)
+        {
+            return;
+        }
         isPush = true;
         AudioManager.Ins.PlayCardSelectSound();
-        UI_Tutorial.Ins.EndBattleTutorial();
-        if (isRewardMode)
+        if (otherCardMode == OtherCardMode.RewardMode)
         {
-            isRewardMode = false;
+            otherCardMode = OtherCardMode.NormalMode;
 
             BattleCardStatus bt = new BattleCardStatus();
             bt.id = this.cardEffect.id;
             bt.level = 0;
-            InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Add(bt);
+            InGameManager.Ins.GetPlayerInfoManager().AddCardInDeck(bt);
             AudioManager.Ins.PlayDuplicateSound();
             InGameManager.Ins.NextFloor();
+            isPush = false;
+        }
+        else if (otherCardMode == OtherCardMode.RemoveMode)
+        {
+            UI_RemoveCardManager.Ins.PushRemoveCard(this.battleCardStatus);
+            isPush = false;
+        }
+        else
+        {
+            UI_Tutorial.Ins.EndBattleTutorial();
         }
     }
 
     public void OnPointerUp()
     {
+        if (isNoTouchMode || otherCardMode != OtherCardMode.NormalMode)
+        {
+            return;
+        }
         isPush = false;
 
         Vector3 mousePosition = Input.mousePosition;

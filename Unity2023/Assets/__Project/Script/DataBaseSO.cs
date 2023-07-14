@@ -10,6 +10,8 @@ public class DataBaseSO : ScriptableObject
     public EnemyDataBaseSo enemyDataBaseSo;
     public List<Sprite> rarityImages;
     public List<CardEffectBase> cards;
+    public List<EventBase> events;
+    public List<RelicBase> relics;
     [LabelText("初期デッキ")]public List<CardEffectBase> firstCards = new List<CardEffectBase>();
     [SerializeField] Sprite attackIconImage;
     [SerializeField] Sprite guardIconImage;
@@ -62,7 +64,24 @@ public class DataBaseSO : ScriptableObject
     public Sprite GetQuestionIconSprite()
     {
         return questionIconImage;
+    }
 
+    public EventBase GetRandomEvent()
+    {
+        return GetRandom(events);
+    }
+
+    public RelicBase GetRandomRelic(List<int> exclusionIndexes)
+    {
+        List<RelicBase> lotteryTarget = new List<RelicBase>();
+        foreach (var a in relics)
+        {
+            if (exclusionIndexes.Contains(a.id) == false)
+            {
+                lotteryTarget.Add(a);
+            }
+        }
+        return GetRandom(lotteryTarget);
     }
 }
 

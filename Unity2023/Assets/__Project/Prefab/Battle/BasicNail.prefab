@@ -146,3 +146,4 @@ MonoBehaviour:
   meshRenderers:
   - {fileID: 251984683184877460}
   hitPlaySoundType: 0
+  objectName: Nail

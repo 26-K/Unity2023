@@ -10,7 +10,7 @@ public class Object_GuardGate : SetObjectBase
         int addVal = 0;
         if (a != null)
         {
-            addVal = a.CalcPow();
+            addVal = a.CalcPow() - 1;
             InGameManager.Ins.GetPlayerInfoManager().AddShield(addVal);
         }
         else

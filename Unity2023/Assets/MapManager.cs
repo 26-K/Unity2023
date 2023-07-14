@@ -41,7 +41,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     public MapSelectButton ui_BossButton;
     public MapData mapData = new MapData();
     bool isMapMoveMode = false;
-    int stageCount = 11;
+    int stageCount = 18;
     int cellSize = 3;
     public void GenerateMap()
     {
@@ -90,7 +90,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
             data.massType.Add(MapMassType.None);
             data.massType.Add(MapMassType.Boss);
             data.massType.Add(MapMassType.None);
-            data.floor = 13;
+            data.floor = 20;
             mapData.massData.Add(data);
         }
 
@@ -169,9 +169,27 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
 
         }).OnComplete(() =>
         {
-            int val = InGameManager.Ins.GetPlayerInfoManager().AddRatioHeal(0.3f);
+            int val = InGameManager.Ins.GetPlayerInfoManager().AddRatioHeal(0.4f);
             CurrentTurnManagerUI.Ins.ShowOtherAnim($"回復ゾーンでHPを{val}回復!");
             InGameManager.Ins.NextFloor();
+        }
+        );
+    }
+
+    public void PushEventButton()
+    {
+        if (isMapMoveMode == false)
+        {
+            return;
+        }
+        isMapMoveMode = false;
+        UI_SceneChangeAnim.Ins.PlayAnim();
+        DOVirtual.DelayedCall(0.4f, () =>
+        {
+
+        }).OnComplete(() =>
+        {
+            InGameManager.Ins.GetDungeonEventManager().Show();
         }
         );
     }
@@ -186,13 +204,13 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
 
     public MapMassType GetRandomMassType()
     {
-        var a = Random.Range(0, 5);
+        var a = Random.Range(0, 8);
         if (a == 1)
         {
             return MapMassType.Rest;
 
         }
-        else if (a == 2)
+        else if (a == 2 || a == 3)
         {
             return MapMassType.Event;
 

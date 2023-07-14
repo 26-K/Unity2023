@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: so--16_Card_ComboBall
   m_EditorClassIdentifier: 
   model: {fileID: 0}
-  isSet: 1
+  isSet: 0
   id: 16
   rarity: 3
   sprite: {fileID: 21300000, guid: c355f4cfea95485489469239692e1e32, type: 3}

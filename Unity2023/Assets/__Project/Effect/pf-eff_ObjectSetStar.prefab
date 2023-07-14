@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2076924218579389614}
   - component: {fileID: 2826019357133113528}
   - component: {fileID: 8046628257402920291}
+  - component: {fileID: -1712059550218852227}
   m_Layer: 0
   m_Name: pf-eff_ObjectSetStar
   m_TagString: Untagged
@@ -4756,3 +4757,17 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-1712059550218852227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464748615100776526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3993d821cd8230346aededb5e9eeef80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoDestroy_sec: 5
+  JustInactive: 0

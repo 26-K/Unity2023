@@ -86,14 +86,7 @@ public class CardManager : MonoBehaviour
         drawPlie.SelfUpdate();
         discardPileManager.SelfUpdate();
         DiscardCardCheck();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            MoveDiscardPileToDeck();
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            GenerateRandomCardAddHand();
-        }
+
     }
 
 

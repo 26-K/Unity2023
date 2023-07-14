@@ -21,16 +21,19 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
 
         if (InGameManager.Ins.GetPlayerInfoManager().floor >= 13 && InGameManager.Ins.GetPlayerInfoManager().hp >= 1)
         {
-            totalScore += 300;
+            totalScore += 500;
         }
 
         add = InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Count * 15;
         totalScore += add;
 
-        add = InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo * 12;
+        add = Mathf.Max(InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo, 20) * 15;
         totalScore += add;
 
-        add = (int)(InGameManager.Ins.GetPlayerInfoManager().GetDiffDamage * 0.4f);
+        add = (int)(InGameManager.Ins.GetPlayerInfoManager().GetDiffDamage * 0.6f);
+        totalScore += add;
+
+        add = (int)(InGameManager.Ins.GetPlayerInfoManager().relics.Count * 50.0f);
         totalScore += add;
 
         return totalScore;

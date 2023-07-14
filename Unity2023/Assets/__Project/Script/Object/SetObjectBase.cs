@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IObject
+{
+    void HitObject();
+}
+
+
 public class SetObjectBase : MonoBehaviour
 {
     int ignoreFlame = 0;
@@ -42,6 +48,8 @@ public class SetObjectBase : MonoBehaviour
     public void SetPreview()
     {
         this.transform.gameObject.layer = 2;
+        SetLayerRecursively(this.transform.gameObject, 2);
+        this.transform.gameObject.SetLayerRecursively(2);
         foreach (var a in meshRenderers)
         {
             Color col = new Color();
@@ -52,6 +60,35 @@ public class SetObjectBase : MonoBehaviour
             col = a.material.color;
             col.a = 0.4f;
             a.material.color = col;
+        }
+    }
+
+    public void SetLayerRecursively(GameObject self,int layer)
+    {
+        self.layer = layer;
+
+        foreach (Transform n in self.transform)
+        {
+            SetLayerRecursively(n.gameObject, layer);
+        }
+    }
+}
+
+public static class GameObjectExtensions
+{
+    /// <summary>
+    /// 自分自身を含むすべての子オブジェクトのレイヤーを設定します
+    /// </summary>
+    public static void SetLayerRecursively(
+        this GameObject self,
+        int layer
+    )
+    {
+        self.layer = layer;
+
+        foreach (Transform n in self.transform)
+        {
+            SetLayerRecursively(n.gameObject, layer);
         }
     }
 }

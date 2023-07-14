@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133bbd3663a3a964282e88c9189c5402, type: 3}
+  m_Name: so--Event_Chest
+  m_EditorClassIdentifier: 
+  title: "\u5B9D\u7BB1\uFF01"
+  desc: "\u5B9D\u7BB1\u3092\u898B\u3064\u3051\u305F\uFF01\n\u3053\u306E\u4E2D\u306B\u5165\u3063\u3066\u3044\u308B\u306E\u306F\u2026"
+  imageSprite: {fileID: 21300000, guid: bb03df383d5d9446ca1a2928afec136c, type: 3}
+  selectCount: 3
+  select_1: "\u30EC\u30A2\u30AB\u30FC\u30C9\u3060\uFF01"
+  select_2: "\u30EC\u30EA\u30C3\u30AF\u3060\uFF01"
+  select_3: "\u7A7A\u3063\u307D\u3060\uFF01"
+  afterSelect_1: "\u8CB4\u91CD\u306A\u30AB\u30FC\u30C9\u304C\u5165\u3063\u3066\u3044\u305F!"
+  afterSelect_2: "\u304A\u5B9D\u304C\u5165\u3063\u3066\u3044\u305F\uFF01\t"
+  afterSelect_3: "\u4F55\u3082\u5165\u3063\u3066\u3044\u306A\u304B\u3063\u305F\uFF01"

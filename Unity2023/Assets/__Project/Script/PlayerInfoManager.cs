@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerInfoManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerInfoManager : MonoBehaviour
     public PlayerManager player;
     public UI_StatusGauge hpGauge;
     public List<BattleCardStatus> battleCardStatuses = new List<BattleCardStatus>();
+    public List<RelicBase> relics = new List<RelicBase>();
     int maxCombo = 0;
     int diffDamage = 0;
     int overkillDamage = 0;
@@ -29,13 +31,36 @@ public class PlayerInfoManager : MonoBehaviour
         hp = 50;
         maxHp = 50;
         floor = 1;
+        relics.Clear(); //レリック初期化
         foreach (var a in parent.GetDatabase().firstCards)
         {
             BattleCardStatus st = new BattleCardStatus();
             st.id = a.id;
-            battleCardStatuses.Add(st);
+            AddCardInDeck(st);
         }
         hpGauge.Refresh(hp, maxHp, guard);
+    }
+
+    public void AddCardInDeck(BattleCardStatus bt)
+    {
+        int maxIndex = 0;
+        if (battleCardStatuses.Count > 0)
+        {
+            maxIndex = battleCardStatuses.Max(x => x.index);
+        }
+        bt.index = maxIndex + 1;
+        battleCardStatuses.Add(bt);
+    }
+    public void RemoveCardInDeck(BattleCardStatus bt)
+    {
+        battleCardStatuses.RemoveAll(x => x.index == bt.index);
+    }
+
+    public void GetRelic(RelicBase relic)
+    {
+        relic.InitObtain();
+        relics.Add(relic);
+        InGameManager.Ins.GetRelicManager().AddNewRelic(relic);
     }
 
     public void SetMaxCombo(int val)
@@ -72,8 +97,8 @@ public class PlayerInfoManager : MonoBehaviour
         {
             AudioManager.Ins.PlayNailHitSound();
             InGameManager.Ins.GetUI_PopUpManager().ShowPopUpTextSub(player.transform, $"\nブロック！[{totalDamage}]", "DamagePopUp");
-            totalDamage = 0;
             guard -= totalDamage;
+            totalDamage = 0;
         }
         hp -= totalDamage;
         SetDiffDamage(-totalDamage);

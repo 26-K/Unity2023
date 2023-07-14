@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 3641389585407823477, guid: 1263eb086a1c80b4e9a979640333e01b, type: 3}
   isSet: 1
-  id: 0
+  id: 18
   rarity: 3
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 7d0a3d070f691274b912e17d2cc7bbd9, type: 3}
   cost: 1
   cardName: "\u30AF\u30A2\u30C9\u30E9\u30CD\u30A4\u30EB"
   cardText: "\u91D8\u30924\u3064\u914D\u7F6E\u3059\u308B"
