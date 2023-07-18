@@ -32,7 +32,8 @@ public class UI_RelicIcon : MonoBehaviour
         }
         if (relicBase.relicParam.isPlayEnableAnim)
         {
-            anim.Play("RelicActiveAnim");
+            anim.Play("RelicActiveAnim",0,0.0f);
+            relicBase.relicParam.isPlayEnableAnim = false;
         }
     }
 

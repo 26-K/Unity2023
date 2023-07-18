@@ -52,11 +52,15 @@ public class ScoreUI : MonoBehaviour
         text.text += $"\nTotal";
         scoreText.text += $"\n{totalScore}";
 
-        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(totalScore);
         UnityroomApiClient.Instance.SendScore(1, totalScore, ScoreboardWriteMode.Always);
         UnityroomApiClient.Instance.SendScore(2, InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo, ScoreboardWriteMode.Always);
 
         retScore = totalScore;
+    }
+
+    public void ShowHiScore()
+    {
+        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(retScore);
     }
 
     public int GetScore()
