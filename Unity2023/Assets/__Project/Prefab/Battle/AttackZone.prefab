@@ -5351,6 +5351,7 @@ MonoBehaviour:
   meshRenderers:
   - {fileID: 2614103111555320515}
   - {fileID: 53484897303471042}
+  objectType: 1
 --- !u!1 &4966055142977992097
 GameObject:
   m_ObjectHideFlags: 0

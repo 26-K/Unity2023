@@ -89,6 +89,9 @@ MonoBehaviour:
   - actionType: 2
     actionPow: 1
     quote: "\u307E\u3060\u529B\u3092\u6E9C\u3081\u3066\u3044\u308B"
+  - actionType: 3
+    actionPow: 1
+    quote: 
   - actionType: 2
     actionPow: 1
     quote: "\u30B9\u30E9\u30A4\u30E0\u30A2\u30BF\u30C3\u30AF\uFF01"

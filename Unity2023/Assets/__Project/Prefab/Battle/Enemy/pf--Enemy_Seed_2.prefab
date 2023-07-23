@@ -92,14 +92,8 @@ MonoBehaviour:
   - actionType: 0
     actionPow: 2
     quote: 
-  - actionType: 0
-    actionPow: 2
-    quote: 
   - actionType: 3
     actionPow: 1
-    quote: 
-  - actionType: 0
-    actionPow: 3
     quote: 
   - actionType: 0
     actionPow: 3
@@ -116,9 +110,6 @@ MonoBehaviour:
   - actionType: 0
     actionPow: 4
     quote: 
-  - actionType: 0
-    actionPow: 4
-    quote: 
   - actionType: 3
     actionPow: 1
     quote: 
@@ -128,14 +119,8 @@ MonoBehaviour:
   - actionType: 0
     actionPow: 5
     quote: 
-  - actionType: 0
-    actionPow: 5
-    quote: 
   - actionType: 3
     actionPow: 1
-    quote: 
-  - actionType: 0
-    actionPow: 6
     quote: 
   - actionType: 0
     actionPow: 6

@@ -87,12 +87,12 @@ public class BattleRewardManager : MonoBehaviour
         {
             return Rarity.Starter;
         }
-        randVal -= 30;//ノーマル
+        randVal -= 33;//ノーマル
         if (randVal <= 0)
         {
             return Rarity.Normal;
         }
-        randVal -= 30;//レア
+        randVal -= 32;//レア
         if (randVal <= 0)
         {
             return Rarity.Rare;

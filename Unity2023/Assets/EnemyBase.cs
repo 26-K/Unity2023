@@ -21,6 +21,15 @@ public class EnemyAction
     public int actionPow = 1;
     [ShowIf("@actionType == EnemyActionType.Quote")]
     [LabelText("セリフ")] public string quote = "";
+    public int GetActionPow(int turn)
+    {
+        if (actionType == EnemyActionType.Attack)
+        {
+            int val = AssensionManager.Ins.GetAddTurnAtk() * Math.Max(turn - 2, 0);
+            return (int)(actionPow * AssensionManager.Ins.GetAddAtkRate() + val);
+        }
+        return actionPow;
+    }
 }
 
 public class EnemyBase : MonoBehaviour
@@ -36,9 +45,11 @@ public class EnemyBase : MonoBehaviour
     public void Init()
     {
         alreadyAction = false;
-        currentAction = 0;
+        currentAction = 1;
+        BaseHP = (int)(BaseHP * AssensionManager.Ins.GetAddHpRate());
         currentHP = BaseHP;
         shield = 0;
+        currentAction += AssensionManager.Ins.GetSkipEnemyAction();
     }
 
     public int GetBaseHP() => BaseHP;
@@ -128,12 +139,12 @@ public class EnemyBase : MonoBehaviour
             if (a.actionType == EnemyActionType.Attack)
             {
                 anim.Play("Attack");
-                InGameManager.Ins.GetPlayerInfoManager().AddDamage(a.actionPow);
+                InGameManager.Ins.GetPlayerInfoManager().AddDamage(a.GetActionPow(TurnManager.Ins.GetElapsedTurn));
             }
             if (a.actionType == EnemyActionType.Defence)
             {
                 anim.Play("Attack"); //時間が無いから防御アクションでも攻撃アニメで
-                shield += a.actionPow;
+                shield += a.GetActionPow(TurnManager.Ins.GetElapsedTurn);
                 InGameManager.Ins.GetEnemyManager().Refresh();
             }
             if (a.actionType == EnemyActionType.Quote) //喋るだけ

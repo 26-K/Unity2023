@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1054328f9c3a13743a19819a29a9b7f7, type: 3}
+  m_Name: so--Relic06_HappyFlower
+  m_EditorClassIdentifier: 
+  id: 6
+  relicName: "\u30B5\u30FC\u30C9\u30AE\u30A2"
+  relicDesc: "3\u30BF\u30FC\u30F3\u6BCE\u306B1\u7403\u8FFD\u52A0!"
+  countRelic: 1
+  imageSprite: {fileID: 21300000, guid: e4e4a9b12661643148d8036e114d3068, type: 3}

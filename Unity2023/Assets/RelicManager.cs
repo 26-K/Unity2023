@@ -67,6 +67,14 @@ public class RelicManager : MonoBehaviour
         }
         RefreshCount();
     }
+    public void AddDamage(int val)
+    {
+        foreach (var a in InGameManager.Ins.GetPlayerInfoManager().relics)
+        {
+            a.AddDamage(val);
+        }
+        RefreshCount();
+    }
     public void WallHitEnableCheck()
     {
         foreach (var a in InGameManager.Ins.GetPlayerInfoManager().relics)

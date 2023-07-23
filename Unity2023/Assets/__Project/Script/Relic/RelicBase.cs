@@ -54,6 +54,10 @@ public abstract class RelicBase : ScriptableObject
     {
 
     }
+    public virtual void AddDamage(int damage)
+    {
+
+    }
 
     public void DoObtainEffect()
     {

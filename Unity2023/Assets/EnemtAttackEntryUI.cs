@@ -20,7 +20,7 @@ public class EnemtAttackEntryUI : MonoBehaviour
             if (a.actionType != EnemyActionType.End)
             {
                 var b = Instantiate(ui_EnemyAttack, instParent.transform);
-                b.Init(a.actionPow, a.actionType);
+                b.Init(a.GetActionPow(TurnManager.Ins.GetElapsedTurn), a.actionType);
                 ui_EnemyAttacks.Add(b);
             }
         }

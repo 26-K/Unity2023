@@ -41,10 +41,25 @@ public class ScoreUI : MonoBehaviour
         text.text += $"\n与被ダメージ差分 ";
         scoreText.text += $"\n{add}";
 
-        add = (int)(InGameManager.Ins.GetPlayerInfoManager().relics.Count * 50.0f);
+
+        add = Mathf.Min((int)(StatisticsManager.Ins.GetTotalUseCountScore() + StatisticsManager.Ins.GetTotalDiffTurnScore()), 3000);
+        totalScore += add;
+        text.text += $"\nクイック撃破";
+        scoreText.text += $"\n{add}";
+
+        add = (int)(InGameManager.Ins.GetPlayerInfoManager().relics.Count * 80.0f);
         totalScore += add;
         text.text += $"\nレリック所持数 ";
         scoreText.text += $"\n{add}";
+
+        int alv = AssensionManager.Ins.GetAssension();
+        if (alv >= 1)
+        {
+            add = (int)(totalScore * (alv * 0.05f));
+            totalScore += add;
+            text.text += $"\nヘルモード";
+            scoreText.text += $"\n{add}";
+        }
 
         text.text += $"\n---------------------";
         scoreText.text += $"\n---------------------";
@@ -60,6 +75,10 @@ public class ScoreUI : MonoBehaviour
 
     public void ShowHiScore()
     {
+        if (retScore >= 9999)
+        {
+            retScore = 9999;
+        }
         naichilab.RankingLoader.Instance.SendScoreAndShowRanking(retScore);
     }
 

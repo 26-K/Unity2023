@@ -46,7 +46,7 @@ public class EnemyManager : MonoBehaviour
         }
         Refresh();
     }
-    public void AddDamage(int damageVal)
+    public void AddDamage(int damageVal,int combo = 0)
     {
         var a = GetRandom(enemys);
         if (a != null)
@@ -54,10 +54,16 @@ public class EnemyManager : MonoBehaviour
             InGameManager.Ins.GetPlayerInfoManager().player.PlayAttack();
             AudioManager.Ins.PlayFireImpactSound();
             AudioManager.Ins.PlayFireImpactSound();
-            InGameManager.Ins.GetPlayerInfoManager().SetDiffDamage(damageVal);
+            if (a.GetNowHP() >= 1)
+            {
+                InGameManager.Ins.GetPlayerInfoManager().SetDiffDamage(damageVal);
+            }
+
             a.ObtainDamage(damageVal);
+            InGameManager.Ins.GetRelicManager().AddDamage(damageVal);
             Instantiate(damageEffectFire).transform.position = a.transform.position;
-            InGameManager.Ins.GetUI_PopUpManager().ShowPopUpTextSub(a.transform, subCamera, $"{damageVal}", "DamagePopUp");
+            InGameManager.Ins.GetUI_PopUpManager().ShowDamagePopUp(a.transform.position, subCamera, $"{damageVal}");
+            InGameManager.Ins.GetComboUIManager().Refresh(damageVal, combo);
             Refresh();
         }
     }

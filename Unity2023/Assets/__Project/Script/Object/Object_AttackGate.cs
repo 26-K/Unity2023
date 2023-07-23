@@ -11,8 +11,9 @@ public class Object_AttackGate : SetObjectBase
         if (a != null)
         {
             addVal = a.CalcPow();
+            addVal -= AssensionManager.Ins.GetDecAtk();
+            InGameManager.Ins.GetEnemyManager().AddDamage(addVal,a.GetCombo());
             a.ResetCombo();
-            InGameManager.Ins.GetEnemyManager().AddDamage(addVal);
         }
         else
         {

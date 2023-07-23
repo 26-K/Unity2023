@@ -38,6 +38,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35c84cc2e09816646b4850ffe2cfa670, type: 2}
   - {fileID: 11400000, guid: 021cced163200df43a149404e7a5703c, type: 2}
   - {fileID: 11400000, guid: 9779a148a9987e841b5bc0dbca8b0133, type: 2}
+  - {fileID: 11400000, guid: be2fce1ef1abb9c4cbf571865375e268, type: 2}
+  - {fileID: 11400000, guid: 20a55e72fe49edd4391f24b6c60ac875, type: 2}
   events:
   - {fileID: 11400000, guid: 916dfd8bd83121d4f955813ccf6bcb87, type: 2}
   - {fileID: 11400000, guid: 7f86960c869474c419090401db853643, type: 2}
@@ -49,6 +51,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 17ab79b75b7f3f34488f8a7d76d309ba, type: 2}
   - {fileID: 11400000, guid: aaf0e831d3cb59440a637374d424b464, type: 2}
   - {fileID: 11400000, guid: 122e86cd5efdfe84aa5de98f95cf00e1, type: 2}
+  - {fileID: 11400000, guid: 036f3138941c3b141b1e251f7aa0867a, type: 2}
+  - {fileID: 11400000, guid: 0776cd88d13528341bb67c38460a7e1b, type: 2}
+  - {fileID: 11400000, guid: d62fb99732e09e4439eda3b0ef219d3b, type: 2}
   firstCards:
   - {fileID: 11400000, guid: 9828869f8de1c474f87541a8fadf92c0, type: 2}
   - {fileID: 11400000, guid: d52d8e4d57d3113499ea99e431ce8db8, type: 2}

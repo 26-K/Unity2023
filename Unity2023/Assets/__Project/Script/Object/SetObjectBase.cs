@@ -7,11 +7,18 @@ public interface IObject
     void HitObject();
 }
 
+public enum ObjectType
+{
+    Normal,
+    Gate,
+}
 
 public class SetObjectBase : MonoBehaviour
 {
     int ignoreFlame = 0;
     [SerializeField] List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
+    [SerializeField] ObjectType objectType = ObjectType.Normal;
+    public ObjectType GetObjectType() => objectType;
     private void Update()
     {
         ignoreFlame--;
@@ -32,6 +39,7 @@ public class SetObjectBase : MonoBehaviour
             ignoreFlame = 2;
         }
     }
+
 
     public virtual void TriggerEnterAction(Collider collider) { }
 

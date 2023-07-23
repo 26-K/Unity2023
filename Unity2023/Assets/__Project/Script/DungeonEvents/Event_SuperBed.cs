@@ -11,5 +11,6 @@ public class Event_SuperBed : EventBase
     }
     public override void Select_2()
     {
+        UI_RemoveCardManager.Ins.InitShow();
     }
 }

@@ -10,11 +10,15 @@ public class UI_Status : MonoBehaviour
     [SerializeField] TextMeshProUGUI floorText;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI coinText;
+    [SerializeField] GameObject assensionObj;
+    [SerializeField] TextMeshProUGUI assension;
     float updateTime = 0.0f;
     float alphaVal = 0.0f;
     public void Init(InGameManager parent)
     {
         this.parent = parent;
+        assensionObj.SetActive(AssensionManager.Ins.GetAssension() >= 1);
+        assension.text =$"{AssensionManager.Ins.GetAssension()}";
     }
 
     private void Update()

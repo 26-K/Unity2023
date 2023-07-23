@@ -5,6 +5,7 @@ using UnityEngine;
 public class UI_PopUpManager : MonoBehaviour
 {
     [SerializeField] UI_PopUp popUp;
+    [SerializeField] UI_PopUp damagePopUp;
     [SerializeField] Canvas parent;
     [SerializeField] Canvas subCanvas;
     [SerializeField] Camera subCamera;
@@ -50,5 +51,14 @@ public class UI_PopUpManager : MonoBehaviour
         Vector2 random = new Vector2(Random.Range(-30, 30), Random.Range(-30, 30));
         a.GetComponent<RectTransform>().position = RectTransformUtility.WorldToScreenPoint(subCamera, pos) + random;
         a.Init(str, anim);
+    }
+
+    public void ShowDamagePopUp(Vector3 tgpos, Camera cam, string str)
+    {
+        var a = Instantiate(damagePopUp, this.transform);
+        Vector3 pos = tgpos;
+        Vector2 random = new Vector2(Random.Range(-80, 80), Random.Range(-80, 80));
+        a.GetComponent<RectTransform>().position = RectTransformUtility.WorldToScreenPoint(cam, pos) + random;
+        a.Init(str, "DamagePopUpText");
     }
 }

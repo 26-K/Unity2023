@@ -8,17 +8,19 @@ public class FieldManager : MonoBehaviour
 {
     [SerializeField] GameObject baseField;
     [SerializeField] List<SetObjectBase> setObjects = new List<SetObjectBase>();
+    [SerializeField] List<FieldBase> fieldBases = new List<FieldBase>();
+    [SerializeField] FieldBase currentField;
     [SerializeField] GameObject objectParent;
     [SerializeField] BulletBase pfBullet;
     [SerializeField] List<BulletBase> bulletBases;
-    [LabelText("発射準備場所")][SerializeField] LaunchReady pfLaunchArrow; //発射準備場所
+    [LabelText("発射準備場所")] [SerializeField] LaunchReady pfLaunchArrow; //発射準備場所
     [SerializeField] List<LaunchReady> launchArrows;
     [SerializeField] GameObject removeZone;
     [SerializeField] Transform leftLaunchPos;
     [SerializeField] Transform rightLaunchPos;
     [SerializeField] [LabelText("フィールドのチェックインターバル")] float fieldCheckInterval = 0.5f;
 
-    [LabelText("配置エフェクト")][SerializeField] GameObject objectSetEffectObj;
+    [LabelText("配置エフェクト")] [SerializeField] GameObject objectSetEffectObj;
     float timer = 0.0f;
     float launchTimer = 0.0f; //発射されてからの時間、一定時間立つと強制次のターン(ハマリ防止)
     // Start is called before the first frame update
@@ -105,11 +107,28 @@ public class FieldManager : MonoBehaviour
 
     public void ResetField()
     {
+        if (currentField != null)
+        {
+            Destroy(currentField.gameObject);
+        }
+        currentField = Instantiate(fieldBases[0], baseField.transform);
         foreach (var a in setObjects)
         {
             Destroy(a.gameObject);
         }
         setObjects.Clear();
+    }
+
+    public void ScaleGate()
+    {
+        currentField.ScaleAllObject(ObjectType.Gate);
+        foreach (var a in setObjects)
+        {
+            if(a.GetObjectType() == ObjectType.Gate)
+            {
+                a.transform.localScale = a.transform.localScale + Vector3.one * 0.3f;
+            }
+        }
     }
 
     public void RefreshBullets()

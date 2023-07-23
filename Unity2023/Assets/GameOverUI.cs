@@ -38,6 +38,7 @@ public class GameOverUI : MonoBehaviour
     {
         obj.SetActive(true);
         isGameClear = true;
+        SaveManager.Ins.AddClearCount();
         clearText.text = "GameClear!";
         anim.Play("GameOver");
         DOVirtual.DelayedCall(2.0f, () =>

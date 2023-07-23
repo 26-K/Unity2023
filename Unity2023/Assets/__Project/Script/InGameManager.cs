@@ -17,6 +17,7 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
     [SerializeField] GameOverUI gameOverUI;
     [SerializeField] RelicManager relicManager;
     [SerializeField] DungeonEventManager dungeonEventManager;
+    [SerializeField] ComboUIManager comboUIManager;
     public DataBaseSO GetDatabase() => dataBaseSO;
     public CardManager GetCardManager() => cardManager;
     public FieldManager GetFieldManager() => fieldManager;
@@ -27,6 +28,7 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
     public GameOverUI GetGameOverUI() => gameOverUI;
     public RelicManager GetRelicManager() => relicManager;
     public DungeonEventManager GetDungeonEventManager() => dungeonEventManager;
+    public ComboUIManager GetComboUIManager() => comboUIManager;
 
     protected override void UnityAwake()
     {
@@ -63,11 +65,11 @@ public class InGameManager : SingletonMonoBehaviour<InGameManager>
 
     public void BattleStart()
     {
-        TurnManager.Ins.BattleStart();
-        enemyManager.BattleStart();
         fieldManager.ResetField();
         UI_Tutorial.Ins.EndMapTutorial();
         UI_Tutorial.Ins.ShowBattleTutorial();
+        TurnManager.Ins.BattleStart();
+        enemyManager.BattleStart();
     }
 
     private void Update()

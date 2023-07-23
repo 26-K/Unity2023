@@ -27,13 +27,16 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager>
         add = InGameManager.Ins.GetPlayerInfoManager().battleCardStatuses.Count * 15;
         totalScore += add;
 
-        add = Mathf.Max(InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo, 20) * 15;
+        add = Mathf.Min(InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo, 20) * 15;
         totalScore += add;
 
-        add = (int)(InGameManager.Ins.GetPlayerInfoManager().GetDiffDamage * 0.6f);
+        add = Mathf.Min((int)(InGameManager.Ins.GetPlayerInfoManager().GetDiffDamage * 0.6f),1000);
         totalScore += add;
 
-        add = (int)(InGameManager.Ins.GetPlayerInfoManager().relics.Count * 50.0f);
+        add = Mathf.Min((int)(StatisticsManager.Ins.GetTotalUseCountScore() + StatisticsManager.Ins.GetTotalDiffTurnScore()), 3000);
+        totalScore += add;
+
+        add = (int)(InGameManager.Ins.GetPlayerInfoManager().relics.Count * 80.0f);
         totalScore += add;
 
         return totalScore;

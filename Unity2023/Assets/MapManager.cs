@@ -169,7 +169,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
 
         }).OnComplete(() =>
         {
-            int val = InGameManager.Ins.GetPlayerInfoManager().AddRatioHeal(0.4f);
+            int val = InGameManager.Ins.GetPlayerInfoManager().AddRatioHeal(0.4f + AssensionManager.Ins.GetDecHealRatio());
             CurrentTurnManagerUI.Ins.ShowOtherAnim($"回復ゾーンでHPを{val}回復!");
             InGameManager.Ins.NextFloor();
         }

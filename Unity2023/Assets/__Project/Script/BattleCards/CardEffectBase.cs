@@ -28,6 +28,7 @@ public class CardEffectBase : ScriptableObject
         else
         {
             UseEffect();
+            StatisticsManager.Ins.AddUseCount();
             InGameManager.Ins.GetCardManager().ChangeMana(-cost);
 
         }

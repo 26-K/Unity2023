@@ -291,7 +291,14 @@ public class BattleCardBase : MonoBehaviour
             }
             else
             {
-                InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(worldPosition, "重なっています", "DamagePopUp");
+                if (cardEffect.isSet == false) //設置物以外は使用可能
+                {
+                    TryUse(worldPosition);
+                }
+                else
+                {
+                    InGameManager.Ins.GetUI_PopUpManager().ShowPopUpText(worldPosition, "重なっています", "DamagePopUp");
+                }
             }
         }
         else
@@ -311,7 +318,6 @@ public class BattleCardBase : MonoBehaviour
     {
         if (cardEffect.CanUse())
         {
-            Debug.Log("Use");
             isUse = true;
             cardEffect.DoUse();
         }

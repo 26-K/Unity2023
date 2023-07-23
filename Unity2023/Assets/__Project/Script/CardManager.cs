@@ -75,7 +75,7 @@ public class CardManager : MonoBehaviour
         ChangeMana(maxMana);
         for (int i = 0; i < drawCount; i++)
         {
-            DrawCard();
+            DrawCard(true);
         }
     }
 
@@ -91,7 +91,7 @@ public class CardManager : MonoBehaviour
 
 
     // 山札からカードを引く
-    public void DrawCard()
+    public void DrawCard(bool isTurnStartDraw = false)
     {
         if (deck.Count > 0)
         {
@@ -103,6 +103,10 @@ public class CardManager : MonoBehaviour
         }
         else
         {
+            if (AssensionManager.Ins.GetIsNoDraw() == true && isTurnStartDraw == false)
+            {
+                return;
+            }
             MoveDiscardPileToDeck();
             if (deck.Count > 0)
             {
