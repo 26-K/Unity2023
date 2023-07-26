@@ -31,7 +31,7 @@ public class ScoreUI : MonoBehaviour
         text.text += $"\nカード所持数 ";
         scoreText.text += $"\n{add}";
 
-        add = Mathf.Max(InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo, 20) * 15;
+        add = Mathf.Min(InGameManager.Ins.GetPlayerInfoManager().GetMaxCombo, 20) * 15;
         totalScore += add;
         text.text += $"\n最大コンボ ";
         scoreText.text += $"\n{add}";

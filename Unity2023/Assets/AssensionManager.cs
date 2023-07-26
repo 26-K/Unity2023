@@ -10,10 +10,10 @@ public enum AssensionType
     TurnAtk = 3,
     DecHeal = 4,
     DecAtk = 5,
-    AddHP_2 = 6,
-    AddAtkRate_2 = 7,
-    DecDef = 8,
-    NoDraw = 9,
+    DecDef = 6,
+    NoDraw = 7,
+    AddHP_2 = 8,
+    AddAtkRate_2 = 9,
     AddEnemyAct = 10,
 }
 
@@ -36,6 +36,22 @@ public class AssensionManager : SingletonMonoBehaviour<AssensionManager>
         }
 
         SetAssension(SaveManager.Ins.status.currentLevel);
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
+            if (Input.GetKey(KeyCode.L))
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    SaveManager.Ins.status.clearMaxLevel = 10;
+                    SaveManager.Ins.Save();
+                    AudioManager.Ins.PlayDuplicateSound();
+                }
+            }
+        }
     }
 
     void SetAssension(int lv)
@@ -99,11 +115,11 @@ public class AssensionManager : SingletonMonoBehaviour<AssensionManager>
         float rate = 1.0f;
         if (currentAssension >= (int)AssensionType.AddHP)
         {
-            rate += 0.25f;
+            rate += 0.15f;
         }
         if (currentAssension >= (int)AssensionType.AddHP_2)
         {
-            rate += 0.25f;
+            rate += 0.3f;
         }
         return rate;
     }
@@ -113,7 +129,7 @@ public class AssensionManager : SingletonMonoBehaviour<AssensionManager>
         float rate = 1.0f;
         if (currentAssension >= (int)AssensionType.AddAtkRate)
         {
-            rate += 0.15f;
+            rate += 0.2f;
         }
         if (currentAssension >= (int)AssensionType.AddAtkRate_2)
         {
@@ -138,7 +154,7 @@ public class AssensionManager : SingletonMonoBehaviour<AssensionManager>
         float decRate = 0.0f;
         if (currentAssension >= (int)AssensionType.DecHeal)
         {
-            decRate += 0.05f;
+            decRate += 0.07f;
         }
         return decRate * -1.0f;
     }
@@ -192,12 +208,14 @@ public class AssensionManager : SingletonMonoBehaviour<AssensionManager>
             (int)AssensionType.AddHP_2 => "敵のHPが更に上昇",
             (int)AssensionType.AddAtkRate_2 =>"敵の攻撃力が更に上昇",
             (int)AssensionType.DecDef => "ガードゲートの弱体化",
-            (int)AssensionType.NoDraw => "カードの効果のドローで捨て札を山札に戻せなくなる",
-            (int)AssensionType.AddEnemyAct => "敵の攻撃の激化",
+            (int)AssensionType.NoDraw => "カードの効果のドローで捨て札のカードを山札に戻せなくなる",
+            (int)AssensionType.AddEnemyAct => "敵の行動の激化",
             _ => "なし",
         };
         return x;
     }
+
+    
 
     protected override void UnityAwake()
     {
